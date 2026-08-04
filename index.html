@@ -741,7 +741,7 @@ function tlCalc(){const sess=+document.getElementById('tl_sess').value,rpe=+docu
 ['tl_sess','tl_rpe'].forEach(id=>document.getElementById(id).addEventListener('input',tlCalc));tlCalc();
 
 /* contract & wage */
-const CT=[{n:'Moreau',w:14000,e:4},{n:'Rehn',w:11000,e:14},{n:'Okafor',w:9000,e:3},{n:'Sterling',w:7000,e:22},{n:'Novak',w:6000,e:9}];
+const CT=[{n:'Forward A',w:14000,e:4},{n:'Midfielder B',w:11000,e:14},{n:'Defender C',w:9000,e:3},{n:'Winger D',w:7000,e:22},{n:'Keeper E',w:6000,e:9}];
 function ctDot(e){return e<=6?'#E4574C':e<=12?'#E0B341':'#3D994C';}
 function ctCalc(){
   const cap=+document.getElementById('ct_cap').value;
