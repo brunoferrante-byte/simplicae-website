@@ -368,7 +368,18 @@
   .gt-panel input,.gt-panel textarea{display:block;width:100%;margin-top:5px;font-family:var(--body);font-size:14px;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--mist2);border-radius:7px;padding:9px 10px;resize:vertical}
   .gt-panel input:focus,.gt-panel textarea:focus{outline:2px solid var(--forest3);outline-offset:1px}
   .gt-panel .btn{width:100%;text-align:center;margin-top:4px}
-  .gt-note{font-size:11px;color:var(--muted-l2);margin-top:10px;line-height:1.4}
+  .gt-note{font-size:11px;color:var(--muted-l2);margin-top:8px;line-height:1.4}
+  .gt-panel .btn[disabled]{opacity:.6;cursor:default}
+  .gt-panel input.bad,.gt-panel textarea.bad{border-color:var(--red);outline:1px solid var(--red)}
+  .gt-status{font-size:12.5px;line-height:1.4;color:var(--forest);margin-top:10px;min-height:0}
+  .gt-status:empty{display:none}
+  .gt-status.err{color:#B03A30}
+  .gt-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .gt-done[hidden],#gtForm[hidden]{display:none}
+  .gt-panel.sent>.gt-h,.gt-panel.sent>.gt-s{display:none}
+  .gt-done .btn{margin-top:14px}
+  .btn-ghost-dark{background:transparent;color:var(--forest);border-color:var(--mist2)}
+  .btn-ghost-dark:hover{background:var(--off2)}
   /* header: logo and button stay on one line at every width; the button opens the contact panel */
   .nav{gap:16px}
   .logo{flex-shrink:0}
@@ -594,14 +605,21 @@
   <button class="gt-x" type="button" aria-label="Close">&times;</button>
   <div class="gt-h">Get in touch</div>
   <p class="gt-s">Tell us a little about your club and we&rsquo;ll reply by email.</p>
-  <form id="gtForm">
-    <label>Your name<input name="name" type="text" autocomplete="name" required></label>
-    <label>Club or organization<input name="org" type="text" autocomplete="organization" required></label>
-    <label>Email<input name="email" type="email" autocomplete="email" required></label>
-    <label>What do you need help with?<textarea name="msg" rows="3"></textarea></label>
-    <button class="btn btn-sig" type="submit">Send by email</button>
-    <p class="gt-note">This opens your email app with the message ready to send to hello@simplicae.com.</p>
+  <form id="gtForm" novalidate>
+    <label>Your name<input name="name" type="text" autocomplete="name" maxlength="120" required></label>
+    <label>Club or organization<input name="org" type="text" autocomplete="organization" maxlength="160" required></label>
+    <label>Email<input name="email" type="email" autocomplete="email" maxlength="200" required></label>
+    <label>What do you need help with?<textarea name="msg" rows="3" maxlength="4000"></textarea></label>
+    <div class="gt-hp" aria-hidden="true"><label>Company website<input name="company_website" type="text" tabindex="-1" autocomplete="off"></label></div>
+    <button class="btn btn-sig" type="submit" id="gtSend">Send message</button>
+    <p class="gt-status" id="gtStatus" role="status" aria-live="polite"></p>
+    <p class="gt-note">We only use these details to reply to you.</p>
   </form>
+  <div class="gt-done" id="gtDone" hidden>
+    <div class="gt-h">Message sent.</div>
+    <p class="gt-s" id="gtDoneText"></p>
+    <button class="btn btn-ghost-dark" type="button" id="gtDoneClose">Close</button>
+  </div>
 </div>
 
 <script>
@@ -653,13 +671,46 @@ function gtClose(){gtPanel.hidden=true;}
 document.querySelectorAll('.js-contact').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();if(gtPanel.hidden)gtOpen(b.dataset.loc||'page');else gtClose();}));
 document.querySelector('.gt-x').addEventListener('click',gtClose);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!gtPanel.hidden)gtClose();});
-gtForm.addEventListener('submit',e=>{
+/* The form posts to the Simplicae OS app, which emails the enquiry to the team. */
+const CONTACT_URL='https://os.simplicae.com/api/site/contact';
+const gtStatus=document.getElementById('gtStatus'),gtSend=document.getElementById('gtSend'),gtDone=document.getElementById('gtDone');
+const GT_FIELDS={name:'name',organization:'org',email:'email',message:'msg'};
+function gtSay(text,isError){gtStatus.textContent=text;gtStatus.classList.toggle('err',!!isError);}
+function gtMark(names){Object.values(GT_FIELDS).forEach(n=>gtForm.elements[n].classList.remove('bad'));names.forEach(n=>{const el=gtForm.elements[GT_FIELDS[n]];if(el)el.classList.add('bad');});const first=gtForm.querySelector('.bad');if(first)first.focus();}
+function gtCheck(){
+  const f=gtForm.elements,bad=[];
+  if(!f.name.value.trim())bad.push('name');
+  if(!f.org.value.trim())bad.push('organization');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim()))bad.push('email');
+  return bad;
+}
+function gtFailText(){return 'We couldn’t send your message. Please try again, or email hello@simplicae.com.';}
+let gtBusy=false;
+gtForm.addEventListener('submit',async e=>{
   e.preventDefault();
-  const f=gtForm.elements;
-  const body='Name: '+f.name.value+'\nClub or organization: '+f.org.value+'\nEmail: '+f.email.value+'\n\n'+f.msg.value;
-  tk('generate_lead',{method:'contact_panel'});
-  window.location.href='mailto:hello@simplicae.com?subject='+encodeURIComponent('Operations review: '+f.org.value)+'&body='+encodeURIComponent(body);
+  if(gtBusy)return;
+  const f=gtForm.elements,bad=gtCheck();
+  gtMark(bad);
+  if(bad.length){gtSay(bad.indexOf('email')>-1&&bad.length===1?'Please check your email address.':'Please fill in the highlighted fields.',true);return;}
+  gtBusy=true;gtSend.disabled=true;gtSend.textContent='Sending…';gtSay('');
+  try{
+    const res=await fetch(CONTACT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      name:f.name.value,organization:f.org.value,email:f.email.value,message:f.msg.value,
+      company_website:f.company_website.value,page:window.location.origin+window.location.pathname})});
+    if(res.status===201){
+      tk('generate_lead',{method:'contact_form'});
+      document.getElementById('gtDoneText').textContent='Thanks, '+f.name.value.trim()+'. We’ll reply to '+f.email.value.trim()+'.';
+      gtPanel.classList.add('sent');gtForm.hidden=true;gtDone.hidden=false;document.getElementById('gtDoneClose').focus();gtForm.reset();
+    }else if(res.status===400){
+      const data=await res.json().catch(()=>({}));
+      gtMark(data.issues||[]);gtSay('Please check the highlighted fields.',true);
+    }else if(res.status===429){
+      gtSay('You’ve sent a few messages in a short time. Please try again in a few minutes.',true);
+    }else{gtSay(gtFailText(),true);}
+  }catch(err){gtSay(gtFailText(),true);}
+  gtBusy=false;gtSend.disabled=false;gtSend.textContent='Send message';
 });
+document.getElementById('gtDoneClose').addEventListener('click',()=>{gtClose();gtPanel.classList.remove('sent');gtDone.hidden=true;gtForm.hidden=false;gtSay('');});
 </script>
 <script type="module" src="/hero3d.js"></script>
 </body>
