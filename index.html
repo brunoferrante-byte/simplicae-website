@@ -369,7 +369,21 @@
   .gt-panel input:focus,.gt-panel textarea:focus{outline:2px solid var(--forest3);outline-offset:1px}
   .gt-panel .btn{width:100%;text-align:center;margin-top:4px}
   .gt-note{font-size:11px;color:var(--muted-l2);margin-top:10px;line-height:1.4}
-  @media(max-width:640px){.gt-fab{right:14px;bottom:14px}.gt-panel{right:14px;bottom:70px}}
+  /* header: logo and button stay on one line at every width; the button opens the contact panel */
+  .nav{gap:16px}
+  .logo{flex-shrink:0}
+  .navcta{white-space:nowrap;flex-shrink:0}
+  .nc-short{display:none}
+  @media(max-width:1100px){.navlinks{display:none}}
+  @media(max-width:640px){
+    .logo img{height:19px}
+    .navcta{padding:9px 12px;font-size:10.5px}
+    .nc-long{display:none}.nc-short{display:inline}
+    /* the sticky header button is always in reach on a phone, so the floating one is dropped */
+    .gt-fab{display:none}
+    .gt-panel{left:12px;right:12px;bottom:12px;width:auto;max-width:none;max-height:calc(100vh - 90px)}
+  }
+  @media(max-width:350px){.logo img{height:16px}}
 
   /* three.js hero prototype */
   #hero3d{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;
@@ -395,7 +409,7 @@
       <a href="#about">About</a>
       <a href="https://os.simplicae.com/">Client login</a>
     </nav>
-    <a class="navcta" href="#next">Talk to Simplicae</a>
+    <a class="navcta js-contact" data-loc="header" href="#next"><span class="nc-long">Talk to Simplicae</span><span class="nc-short">Talk to us</span></a>
   </div>
 </header>
 <span id="top"></span>
@@ -556,7 +570,7 @@
 <section class="cta" id="next">
   <div class="wrap">
     <h2>Stop running the club on adrenaline. Hand us the business behind the game.</h2>
-    <a class="btn-dark js-contact" href="mailto:hello@simplicae.com?subject=Operations%20review">Start with an operations review</a>
+    <a class="btn-dark js-contact" data-loc="final_cta" href="mailto:hello@simplicae.com?subject=Operations%20review">Start with an operations review</a>
   </div>
 </section>
 
@@ -575,7 +589,7 @@
 </footer>
 
 <!-- floating contact -->
-<button class="gt-fab js-contact" type="button" aria-haspopup="dialog" aria-controls="gtPanel">Get in touch</button>
+<button class="gt-fab js-contact" data-loc="floating_button" type="button" aria-haspopup="dialog" aria-controls="gtPanel">Get in touch</button>
 <div class="gt-panel" id="gtPanel" role="dialog" aria-label="Get in touch" hidden>
   <button class="gt-x" type="button" aria-label="Close">&times;</button>
   <div class="gt-h">Get in touch</div>
@@ -636,7 +650,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{c
 const gtPanel=document.getElementById('gtPanel'),gtForm=document.getElementById('gtForm');
 function gtOpen(from){gtPanel.hidden=false;gtForm.elements.name.focus();tk('contact_open',{location:from});}
 function gtClose(){gtPanel.hidden=true;}
-document.querySelectorAll('.js-contact').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();if(gtPanel.hidden)gtOpen(b.classList.contains('gt-fab')?'floating_button':'final_cta');else gtClose();}));
+document.querySelectorAll('.js-contact').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();if(gtPanel.hidden)gtOpen(b.dataset.loc||'page');else gtClose();}));
 document.querySelector('.gt-x').addEventListener('click',gtClose);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!gtPanel.hidden)gtClose();});
 gtForm.addEventListener('submit',e=>{
