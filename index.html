@@ -3,22 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simplicae — The operating layer behind sports organizations</title>
-<meta name="description" content="Simplicae installs and runs the operating layer behind sports organizations — the people, systems and tools that organize the work behind the season.">
+<title>Simplicae | The back office for sports organizations</title>
+<meta name="description" content="Simplicae is the back office for sports organizations. Our operators and software run the business behind your club, so your people can focus on the game.">
 <link rel="canonical" href="https://simplicae.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://simplicae.com/">
 <meta property="og:site_name" content="Simplicae">
-<meta property="og:title" content="Simplicae — The operating layer behind sports organizations">
-<meta property="og:description" content="Simplicae installs and runs the operating layer behind sports organizations — the people, systems and tools that organize the work behind the season.">
+<meta property="og:title" content="Simplicae | The back office for sports organizations">
+<meta property="og:description" content="Simplicae is the back office for sports organizations. Our operators and software run the business behind your club, so your people can focus on the game.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Simplicae — The operating layer behind sports organizations">
-<meta name="twitter:description" content="Simplicae installs and runs the operating layer behind sports organizations — the people, systems and tools that organize the work behind the season.">
+<meta name="twitter:title" content="Simplicae | The back office for sports organizations">
+<meta name="twitter:description" content="Simplicae is the back office for sports organizations. Our operators and software run the business behind your club, so your people can focus on the game.">
 <meta name="theme-color" content="#102818">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23102818'/%3E%3Crect x='8' y='8' width='16' height='16' fill='%23E1F905'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;800&family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
+<script src="/analytics.js" defer></script>
 <style>
   :root{
     --black:#000000; --forest:#102818; --forest2:#16341F; --forest3:#24503A;
@@ -345,6 +346,40 @@
   .boiler{font-size:12px;line-height:1.6;color:var(--muted-d2);max-width:680px;margin-top:26px}
   .foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px;font-size:11px;color:var(--muted-d2)}
   .foot-bottom .endorse{font-weight:800;color:var(--mist)}
+
+  /* v2 additions */
+  .hero-facts{margin-top:56px}
+  .hero-facts .pcard{background:rgba(22,52,31,.7)}
+  .com-item .id{font-style:normal}
+  .how-note{font-size:14px;color:var(--mist);margin-top:20px;max-width:700px}
+  .step-n{font-weight:800;font-size:11px;letter-spacing:.14em;color:var(--signal);margin-bottom:10px}
+  .g-black .pf-cta{background:var(--forest)}
+  /* chips: centre the label vertically whether it wraps or not */
+  .pf-chip{display:flex;align-items:center;justify-content:center;min-height:54px}
+  /* floating contact */
+  .gt-fab{position:fixed;right:20px;bottom:20px;z-index:70;font-family:var(--body);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--signal);color:var(--ink);border:none;border-radius:30px;padding:14px 22px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:.15s}
+  .gt-fab:hover{filter:brightness(1.05)}
+  .gt-panel{position:fixed;right:20px;bottom:78px;z-index:70;width:340px;max-width:calc(100vw - 32px);max-height:calc(100vh - 100px);overflow:auto;background:var(--off);color:var(--ink);border-radius:14px;border-top:4px solid var(--signal);padding:22px 22px 18px;box-shadow:0 18px 50px rgba(0,0,0,.5)}
+  .gt-panel[hidden]{display:none}
+  .gt-x{position:absolute;top:10px;right:12px;background:none;border:none;font-size:22px;line-height:1;color:var(--muted-l);cursor:pointer;padding:4px}
+  .gt-h{font-family:var(--disp);font-weight:400;font-size:22px;line-height:1.1}
+  .gt-s{font-size:13px;color:var(--muted-l);margin:6px 0 14px}
+  .gt-panel label{display:block;font-size:11px;font-weight:800;letter-spacing:.04em;color:var(--forest);margin-bottom:10px}
+  .gt-panel input,.gt-panel textarea{display:block;width:100%;margin-top:5px;font-family:var(--body);font-size:14px;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--mist2);border-radius:7px;padding:9px 10px;resize:vertical}
+  .gt-panel input:focus,.gt-panel textarea:focus{outline:2px solid var(--forest3);outline-offset:1px}
+  .gt-panel .btn{width:100%;text-align:center;margin-top:4px}
+  .gt-note{font-size:11px;color:var(--muted-l2);margin-top:10px;line-height:1.4}
+  @media(max-width:640px){.gt-fab{right:14px;bottom:14px}.gt-panel{right:14px;bottom:70px}}
+
+  /* three.js hero prototype */
+  #hero3d{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;
+    -webkit-mask-image:linear-gradient(to right,transparent 30%,rgba(0,0,0,.18) 50%,#000 68%);
+            mask-image:linear-gradient(to right,transparent 30%,rgba(0,0,0,.18) 50%,#000 68%)}
+  .hero.has-3d .hero-mono{display:none}
+  .hero .hero-facts .pcard{background:rgba(22,52,31,.88)}
+  .hero3d-label{position:absolute;right:54px;top:34px;z-index:2;font-weight:800;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);opacity:0;transition:opacity .35s}
+  .hero3d-label.show{opacity:.85}
+  @media(max-width:899px){#hero3d{opacity:.3;-webkit-mask-image:none;mask-image:none}.hero3d-label{display:none}}
 </style>
 
 </head>
@@ -354,147 +389,102 @@
   <div class="wrap nav">
     <a class="logo" href="#top" aria-label="Simplicae home"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABNMAAACECAYAAAC6VW0UAAA7UElEQVR4nO3deZgcZbXH8W+YJJOVBAKEIEgwgAgiCAjIIpsiOwgIiCA7GLgg+ya4ABcEFREQZJFFWQTZERAURUBAdtkiq8GELSwJZJ9kkvvHqbrdmcxMV3dXvaeq+vd5nn5mpqe6zpmZnu6qU+973j7Tpn+MiIiIiIiIiIiI1LaIdwIiIiIiIiIiIiJFoWKaiIiIiIiIiIhIQiqmiYiIiIiIiIiIJKRimoiIiIiIiIiISEIqpomIiIiIiIiIiCSkYpqIiIiIiIiIiEhCKqaJiIiIiIiIiIgk1Nc7AXEzGPgSMBJYFlg5+nwUMAjoD8wGOoEZwExgKWA0MDC6v71qf7OjbeKPc6NtAOYA86Ov26L7+ifI8WPgRuCe6OsPgaHRvocCHdE+51bl0j+KPyHKRUREREREREQkNX2mTf/YOwfJzgAqxauhWEGrD7A9MBZYjWRFLW8To49TgeFUfo5OKgW72EBgClZ4e73L99uwAlx/KoW9qdHHuDg3Ibp1JMirLbpNo1JwnIIV8dqwYuBcKkXGWJxTPDI0zie+P95vkhx601G1r65f98eKnG3Y84Qox7jAPhf4oMn4RPtbNvoY5zEj+jgAeDWFGK1mcPRxUezvFBeVB7Lg36/W8yf+X4h1ff4NqrpvdvT1RERERESaF5+nxMccXS+CVx+3xsc6YOcA/VnwmB7sOGgJ7Fh8CjCEyvHnRGB54M0sfhARaU0qppXXVsAFwIreiUhhjQc+D0xv8PFfAB6hUvzpzoPAJg3uvxXtCNzmnMN3gUuccxAREZHiWht40iHuv4HPOcQVkRJSMa1clsNGm00H/kIxRp1Jvq0KjGvgcSOBY4DjEmw7Fvh1AzHKaDCwOva/uyQ2+mw2MBk4BCum5cEfgT9QuWo8E3gfy/U5YJZfaiIiIpITXwD6YTNA4hkKfYAbgMWdcjoXuBP4MvAoNlNkLvAGGoEvInVQMa08lgHe8k5CSuezwCsNPK4TOzj5PnA/MALrazcDm4I7CJuyuxvwbeBWYOfm0y28edhBZpF9jP1tRUREpHUdCvzKO4kG7Arc7J2EiOSfFiAorm2BpbFRLFOB7XzTkZIaXuf2qwEHY4W0N4Azo/sPAS7F+t1thg3vb8cWtAC7Ong1sE9T2RbLbsCm2MIer2BTs4teSAMYhhVQX8T+vq9joxsvdcwpqW8BK2GvqV2nJ8/r8nXXfo1dDcIKxwOjz9/GRg8D/BjrWZjE+sCWVHodzsJGAjb7/l1rNe+4F028qEsb9nrwLHBNk7HL6ngW7vkzHBuR0Yk9H2Zjr33x36+6VyFV91V/3Z34+Rj3Eor/PlOw/7fb68w99kVgm6r85vew3dwG958X9f7/dGL/C+1URuNOAi5MOa9mfRt73a31/Kkl/nk7qfz/g72eP4v6na4PbEHlf3sI9nzowF7za2mjslBX/P/ejv3O436+7cD12HtpEXwKOAJ7jozBLp7+yDOhJtyEtcqZjP0cZ/umU0jHYiMPp2DHuR3R523YSMXetGH/Fx1VX8f3xa9NHcDL2MX4slof2JpKP8E52M9dhnMFT/1Y8LU3nslX3YP6Y6zH4o+xY7ceaWRaMX0DuMU7CWkJy1HfkPcHsB5oNwB7RPeNBS4CzgOOAl7DDrRiGwF3Y1Maf4qdkJbdicBZ3kkEdhBwuXcSvdgY6+EXQvX/Ry1zyN+Fr58AJ3knkTN3YUWovGj0YLun4pl07w/YhZE82BK4N0Cc6cA6WO+pVjUFu3AUQlFOnD/Eb9pm1vSeV5/LgQMCxSprq5h+NL8QnTTvEWDD3jaodWVa8ucsVEiTcIbXuX28mEB8QH8BcDhW6b+v6r4p0edXAv8AXoq+PrSRJAtiW2y03jhar5AGcBk2OmsC8Dy2otZarhktKGRD4qRTmj9F/gppYAuTyII+7Z1AF0MDPabVfRN7TXsSeBwbRfQq8B7hF4BaM1CcwagtQ6hCWl6dgx233QM8TLkLaWAXQF/BRt29jo1Y28I1o3zbPWCsi7HRQ2WjRTLyYYNaG2hkWrG04mgW8fUFrPCR1HRsOPLR2FS/f0X3L4pNW6g2tOq+3wJ7R5+fBZzcSLI5FA9LH8LCP7/YsPUlycfvZk/g2kCx3sH6XCaRx5FCn2BTySY755Enefs7fQorXtdjEI2v3iwLm4AVWeP3gax9DxsBHkKeRuR5CPn/nreRafsDv/FOIifWAp7xTiKHPN4P8/Z/0qwx2Ewe8dfrc0sj0/LvKOxFaT4qpEl49b4hDqr6uE7V/d0VS6rvi3urfYDNUS/Da9OyWE+U+eSjWJRH7VhhZj42RdhTsz2G6tEeMFYWFsWuzi/mnUgObEz+CmnQ2GreWgE8Xcthz425hJlCPqj2JoWMJf72oXIuokJaxdPAL4FVvBPJiXVJ3g82bSOd4mala/9VyakynLCW2Rhs+WYRL7WahPaks87HzsJWfHobG8XVtdl70SyJTX+Q5DYBzneMPyNgrDJcQV0Ma47b6sq0+E8epxSXxcbYBdEsT/hmZbjvrpI02ZdyGAlc5Z1Ejh2BLaB1CLCycy7edsXvfWRfp7hZCfl6Lk1QMS2/vomGd4q/Rl8j+mM9Y3rzBDZVBGwF0MOwaTE7NhgzL5bAVvVSX6n6HY49BzyEHGlRlpGKy3snkAN5vRreSONiXQnP1onAu9joniMz2H/XFYizlNfnvaRrS+w5K71bF2uC/7J3Is48G+b/BPizY/y06YJFQegqZD5tANzonYQIMLPBx02m0kfiE+AKrFg2Eyu0XYdNA42ngm4dfSzqiJ3FsZFVn8EKg9K4ZbHmxs9jB2Y3BIob8uJSWaZI/RR4DHjWOQ8vq2PTn8oi5FTnVvcT4COsX2haQo7o1ipz5TUA2AwYAfzOOZciugc7bplJuOOXPNgY+L5zDl91jp+mKd4JSDIqpuXPLsBN3kmIROo9uZqKLSywGLZa4xDsYGI/7MThWOBuFlwFqQ1YKvq8qAfoN6KVndJ0XNXnX8KeN1kL0SA8lvR5nvfeakOwonlRi+DNWB14zjsJKax2bGrYSKwonYaQU9U1irGcBgPTvJMouK2iG9ixy5cccwllJGH6QrYSXdwqCE3zzIflgZOwFyIV0iRP6m2sfSy2GtwPsKWqp1NZOGNc9PGRLo+5jsrKhqPrT9HVisBFqJCWpWOw6Z9lkvQgKY+N7cUs7p1ADSELK9K4c4CzU9qXTr6kGRsDj3snUTLrYBechnonkrHNvROo8hzFO5fozgDvBCQZFdPy4ZfYaoYbeyci0kW9B+eXAptGj/sB9gY7EZvGGa8AdSHWpHRvbCrfblWPv7+JXD2cD4z1TqIFnM+Co9UkX7auvUnptOLPLNk4nsqK1kURciSvhPEgsKp3EiW0JnbRuMzydEF5dbTirASkYpq/dSh+w3Upr0ZW83wS2Bl4ASuOjcd6SGwTff+72AjM32FverF/A6c3mqiDt9EJdUjnYIXYVlKU9+i7sRGEreJy4ATvJKRUTqL517eQI9OK2pJBFrYaGgWdte2Ap7yTyMhVwAHeSXSxTO1NRNJRlAP1slqadJvPiqSt0b4ot2ILDlTbOfrYXYPQa4DPAR83GC+0nwCjvJNoQYdhC7RI/vzMO4FA2sjfiYOUw2HAt7yTkJYxEhgD/N07kRaxFtYfcZh3IinL4yI8q1COqZ5SAFqAwNdxWAFBJK/6N/HYB7EFNdbAVqX5RXT/d4Ados+nAq9TrMalx6BRKZ7+gY1yvMc7kSY0MuJT8qHMfak0OsXfddhIoVO8E6mhzP8HreBRYH3vJFrQsVhRLU/TIsvqP9jv+a/eiTQo5OrM0gQV0/ysBxztnYRIDa81+fhbolu18VgPrKJqlRE4eXYKxS6mJS1azMk0C2nEJd4JSOl9H1sF+3nvRHrRzIU28XUVKqR52hw4g/wXzJO4wTuBGtamuMU0KQgV03xsA9zlGP8jrAH85G6+p6uNxTEXOynvE33d3f9z3CS4rct91c2D52EjZdqi/c0GBgGvUpxpl6F8xjsBAYo/1TPpFceivR6fgp0klNWf6X6aelmoqXx+PAccBZxXx2P095NaHgI28k5C+D6wCcVeeO4aFlxALI+K3I6lT+1NJA9UTAvvO8DVjvFvBU7Gmr2LSHIroR6HefJz4MfAJ96JyP87Hft7FHnkaW/KXEiT/FnbO4Fe6PyhmFRIy4+NgHOBs4D3nXNpxLe9E0jgKKw1yM3eiUh5aQGCsJYgfCFtMjAYa8Y4CGsCr0KaSP0uJZ9TIx7EGsC2YVNvRkS34cDA6L7hwFLRbVR0GwwsGt0W6/JxUaxRbp4dTbojfEP2p0g64qyII012rr2J5JQKJPmyaZ3bhxzJ2ujiRCJScRRwmXcSJXcTdv5bNHO9E5BkdOAU1ucDxpqONXffFpgBvBwwtkgZbeqdANABfIgt6LACVuA7g8pVzXnYNO6uGpmuezzwAHAwsGUUM29D5sd4JyAL2QQbUfOUdyIpGg084p2EtJxlgWexqWBTfVNZSNGmoLe6VSjGQk/VI7T6Y61HPgAmAu9hF/zGYBf8ZgDvAP8E3sIuIo4B1sUuIHZG23+ADWbIqx2Bu7EWQEXwaeAZ7yTqNAx7voikTsW0cIZifcpCWBnrdyUi6RjinQC2GmroRUvujm6xPtjB6t+wEz1vo4AVaX6hDEnXacD2lGc1qrPIXyFZWsMawLewCycijegLPImNRs+zG4HdM9p3P+yiyCsZ7b9ZWwO/A/b2TiSBA4DFvZOo06HAqd5JSDmpmBbO78n2qsMfsCs6N6NCmkiadsf+fz3cC7yJrep2oVMO1eZjhasvA0cCx7hmY14FlsGuUEs+bIOdHHgutJOmpKuvimSh3TuBbuj8oRjWJJ+jiN4FrsdGn03Fpg3/KMN4c7BjhUOxC4IdWNuLkcB2Gcatx17A6tjfLM/W9U6gAadgI+r28U5EykdvhmHsQ7aFtO8DZ2a4f5FWNtYp7gvAVk6xa5kIHIsti34p/gd/mwPXOucgC/oB5SimrYONDBLxsgdwH/lq16Geafk3kgVHlufJlthFwtAu7ua+f5KfAtEa2BTWvC6s1E5+j0tr+Q4qpkn9bqq1gYpp2buKbP95v4ItdS0i2fAYFXA5diUt754AvohNtbwCv2XeF3WKKz1bFxvF+HlglnMujfo89hyXbHwD6wHZjp089o8+n0NlNOB8rHCzSHTri/XrarQ5c7yoxxCsh86QKEbfqhy+C3yzwf1nYQNs4ag+3olUUc+0fFsG6yOWN+diK3G/7Z1IlfWwkfa/cM4jNph8FtM2B+73TkIycyTwNPYeORB7T5zPgu+1fbH356L0n+us+lj9njUMG506CxiAHQe0YT/XTOznHIj97H+tFUTFtOx9KcN9n03jhbRDsQPTgdgTJ36S9ceeYPHX8ROxu691MJWtZldyqf7/nht9PZfK33Bg9Pl72Jt3fyrPhVHAbeRzekBorxF+Fc9zsL9LUbyGNdHtbvGDEBZziiu9G4MtlDHOO5EGbe+dQMnd5p1AD/6KXdA4wDuRLj5Lfkan6fwh39bwTqCL14DfAD/xTqQH5wE7YQvoeLsWK+jnrb/bOt4JpOAi7PxXFvZL7wSKSm+G2Vs1o/1+HRv234jzgO+ll4qU1A+wFZA+9E7E2aaB402nmH0PJ2PTkTz6y63uEFOSKXIvu9HeCYibA6PbctgFpkOB41wzssWl8lJMk3xbzjuBKqsAb2AjWvJsG2wkzmjgFixvD5thK6kv4xS/J2VYPX0sttLrns55SIks4p1AiS2NTfHMwo+pv5B2KnAP9gKtQpoklbc385AWwRrkhl618qDA8dJ0A3CZQ9w9sCHqkj9Ffg0Z7Z2AuJsAjAeOB/7im0puGqVD/gsjrWwn4BLvJCKnYgXgIjxf4ile4/DvwZq31aMPBw72TiIlRe35JjmlYlp29iabXmkHUf+KN2sDp2EvIHkYwixSBGOxIk1IV2MFvCJ73CnuL7CRlJIvu3kn0KAzsSbZIrGvYVPVvBxMeU5oJTu3eicQ2Qo4wzuJBuVhgY2B3glUOd87gRQN905AykXFtOxkNRz2wTq3Hws8mUUi0hL6eyfgaIBDzDw15W3U5fidcKp1Qf78EOsBWCTtaAS3dO84fPs+7esYWySpscC93kk04afYsYynGeRjJekyTO+slqeFXKQEVEzLTkdG+62nIeXGWLNFkUYN8k7AkccCG3lrONuoA7HV50JrdtEOyYZ3r6l6LUZrv/ZJzyYDJwFXOsX/ci/f6+zle9IaTvROAJtm+mvvJFJwEDZbwFMWM5zqtbd3Ahk4yzsBKQ8V07KTRfPPeqZo7kT9o9hEumrlg3OPk+kyrUo5ySHmYIeYkkyRGv4Wob+P+NofjV6UfDkH/yLBfsDtzjmkaV/gCMf4wx1jA9yJjS4vmxMpZ5FQHKiYlo3VsGJWmrYieXFsJfLTM0GKbYZ3Ao4mO8Qc4hAzKw84xPzYIaYkcy3F6J82FLjAOwkphLz1EfIYTS354d1P7zSyW3jN0wXAzU6x1wN2dooN+Vr0JG3reicg5aBiWvqWAV5IeZ/bkLz3wN6UZ6qY+MtqunIRLOkQ832HmFn5IbB54Jh6T8u3IozkeZJ89KkREanHMMfYq1HOEUyxXYGLnWLfTLmLWl5W9E5AykEnHulbM+X9jQfuSbjt7sBvU44vra2Vp3l6rOZ0MfB1h7hZ+RvhVvN6EpgSKJY0ZgPvBBJY2TsBEZE6LAJc4hj/TuAlx/ihnOoYey/H2GW1FXC8dxJSfCqmpW/ZlPeXtO/QYOD3KccWme+dgCOvZvZ3OsXNyqnY6kmN3IZXfb4ktlR8H2yV2b5YX7v4+18C5oX5kaSkBnonINIErWbcms7Bb4rnw8CFTrFDm4VfUctjpfdFA8W5FzumGwiMCxQzdja+02ilBFRMS9/EFPf1HnBywm2HpxhXJNbKPVimOMXth00XlwV7oH2AHcyCNYjvBGYGz0iaNQ7r65k3u9HaPSJFpJjWdIx9OnCfY/yQpmO9P+/yTiSAzQjXg/Yh7JhuFslnYonkhopp6Uuz18rSwP0Jt/1minFFYq08zdPzKv9+wBJYUa3dMQ+RtK0CHO2dRDdO8E5ACsmjHYBItTQv4terVQpp1R5yiLlr4Hj7BIxV3St48YBxYxqZJk1RMS1dT+IzBPhu4BcOcaX8Wnmkhmch8QzsAOMt4EzHPESykMcC8VDvBKSQnvNOQFqex/T094BNHeLmwTSHmMsB/w0Yb5VAcd4Bbqz6elZPG2bo28BrDnGlJNRfIV1rO8Xd2imulN8n3gk4muydQORo4HFsZdUJ0cfFsP5gS2HT5lqh+a+Ux17Yym8TvBOJrEw+p56KiNTiUUzbH/i7Q9w88BiZBlZQC2FrYL1AsXZjwZYqLweK29UYp7hSAiqmiUhvlqZ1C2rveCdQpdbiImfgu9KUSD36YVfZl2LBKR4edgFucs5BisvrIqpIrI9DzGEOMfPiOWzk1rLYDIapWEGzP5U+rnNq7KMv1pN4PpX+r/Oi/QyN7puE9cN+J9rf8PR+hB5tD9wRIA7AeGwBi2rnYReP/xEoB5GmqZiWXxcl3E7TOyVLeZyOFcoDwG+AA5zzSOIUbOWl8ViBYkVs9afx2AHYXGxE21DswG8o1ky3E5vK+wqt2ftEfK2EfzFtE+f4UmxqlyKe9ga2c4j7pkPMPHmZ8KOo3goQY/kAMWKTerj/EWzxg9AF2zuxRf+eDxw3L07Hptm2YecMnVSKwgOij3Ojj/3Cpla36jY9bVX3tUUfh2L9Tq8jhSm+Kqbl0wHAFQm2+xlwZLapSIvLyzQsLwdiU9KKUFQ8osnH34aNbnuh6r64+Cat4SvAgwHjbYEdOHtaKlCcrwF/DhRLRMpvXeC3TrFbuZ9umW0UMFZvF9ImEL6Yth0wClgncNy8OMU7AQf7A6Ob3YmKafmUpJAG8KUMYscnzgOwN8u4otufyhDmRbDiwifYaBioTAWMvwaraPfDhjHPplLZno8NS58GDInui6vIbVWPnxnFjCvJXbeZBQyKPp/dZbv+2Eictqrtuz7fZ0c/RzxEfk7V46sf56UTy28G9vP0w0YTAQwOEP8yFuxl0Koexk76y26n6PYfKqPXVsD+t5/H+nUMxKYcDATeAFbHDnqGY/1TDgmbsqTsIWxl6D8EincadqXzrEDxuroE2D1QrL8EiiOta27tTaREvE767wKedYot2TmHcO+HH9D7ue7B+Fxo07T91pLKSEwV0/JpCeyFppZBtTepy8n4ndRI/c7DmoTOxgqPz2JFjmlYL4dlsKaaw6l/uekrsDczab2C4gpdvl4U2LDq6yWjj3HD9mWij5/Fpj2cS6UfyOyMcpTs3ARsBfwpULwz8Xnf2Yhwr3Hz0HRAEUmXx+iwe/GZVirZWh44LmC8JWt8/1HsAq7H7JiN8VtkQgpIxbR8Snp1Me2D88dT3p9k60jsDWkKVrjobknp5YER2DDWYVgBdky0/eLRY4dgz6UJ2Kp244Hjs0u7cK7AmpRLbT+Pbr35B7Af8Gr26UiD7vVOIIAkF6zS8jRWUBMRSUu9F0nT8IpDTMnegNqbBDfRKe6DwD74TaGWglExLZ9m1t4ESH8aYquu2lhkcc+BnlYOejO6PR0mnVK6G+tHdr53IiWxIfAY1otuCnb18UVsRGWrNzVuVT8l7FVxgBMDxro2YCwJ51veCUhLm+YQczmHmJKtTwFnB4z31zq2fZ/ao9iysCsqpklCKqbl0whsJb5a0p7mqSlZIt27ABXT0rQ4VqTsqk8390n5HYtNG94pULxXsRVvQ9iW7p/rUmynYKufiXjxKKa16kqHZXY9NrUxhF9h7/dJLQvcAXw9m3R6ND9wPCkw9fDIp6RFsrSLX3o+iPTsDu8EWsBdwL6Ea4IrPbsvcLwdA8YKVUgDFdLKaAf8CmkPO8WV/PFYcGKcQ0zJVqhCGsD/0H1Lmp50AAdmlEtvdkC9ASUhFU/yKWnDxbRHcXw25f2JlMmOwOHeSZTcNsCVwO/xWclJKr5OfVeQi2KEdwJSaEcBtzvF/iVhT3wl35YNHO8R4KnAMSVbac9wykK7U9w7gT2cYkuBqJiWT0lHnHWmHHdyyvsTKZsLvRNoIV8G/omNCDzTOZdWFfr5/nvgMxnufyXgXxnuv6syFiNb2Q+x1Yq9aLV1iQ0j/Irr76AFCMpkDPAX7yQSeB2/CxhDneJKgaiYVmxDUt7fGynvT0SkGesC2wMnAWdkHEs9MhY2G5vuEMruwGEZ7v8CrNlyCMdRe2VbKY69gR8551BrelTIE79+AWPJwi4j/GySTYBPB44p2fkDdtGyCHYCbnaIu6lDTCkYFdPSdSDwAPAk8ASNrUz3ozq2TXMBiR8Br6W4P5GyOpb0R4VKbd/HCl5TCNeoXmyqwzUB462V4b5DTpF7NmAsycae2GvOfPKxslutYlnSleCl+L7pEPNQ4L8OcSUbowLHa3b145CjymN7YsdAIj3Sap7p+k10qzYa2BrYjQUr3DOAl4APsRe0EViPmhfriPck6Vwl+iFwWp2PGYmtJLQE1uNtKaANmI7Nb+/EmqO2R/d3YCPp+gL9o/s+jPaVZOXS2FLYHP85wABgavT50Gj/HdjJNtH3p2AHmEtGOc2p+r5II36OFc1vRcvEexiG/e6/AjzknEurmBEw1qbY+8oHKe93BcL2h5kSMFZRbYe9lg6NblOx9/D52N+qDTtmiButd1bd19Zk7D7Y32gAdmF5GjbaaiiVv921TcZI28Qa3w/5fyp+PFa9noWNZJJyWAFYOmC8c7E2Ds3w6te3HfZ+o4vo0i0V07I3Hrg4ui0PLIYd8EwBJkXbDMBe1MbXue9dgLHRPt/GDj4HR/sdgRWR5mEHitUvAvGLwjDgE+CSOuMeDpxf52N6M4ZkU0zXxgqIzboCOCCF/Ujregprlj8Hu0LstbJbK3sQmxJ4kXciLWB44HjvA+uQ3sHzVsA9Ke0riW+QzntV2emKfzKzgS0SbKeTPcnKpNqbSEHsSfgLBWm8H96NDTq5N4V91WsY8JFDXCkAFdPCepPup37Oov5CWuzihrNp3Nop729brJdNLdukFG9/VEyT5r0QfTwDK14f6ZdKy/oV1kfjPe9ESu4GbHR1SGuSXjHtqyntJ4nLgdsCxpPyOwH4R4LtBmadiLSsZkeCSn54nP88n9J+7gOeA76Q0v6SuhSbpjoncFwpAPVMkzxI+iaddJXTWtRXRNJ2FNk2TpeevQvs651Eyd1C+gve1DIixX19LsV91fJ+wFjSGuZ5JyC5spRDTBVqy2N4wFjzsEV/Xqi1YR083mN3Id2fQUpExTRpRJonOZD8TTqtkZRza28iUreLsKKDhHclcLB3EiU3nbCrGZ6NraDYrMNJb1RzEncHjCXl10ny55SmebYGj1lFGpFTDnuR7SI/Xd1JfX2xk/hZyvtLamWnuJJzKqZJI9Ie2TUt4XZpXRkLuXy8tJZdsObAfdBJdWj19n6U+t1P2JG9za6g+BXS7e9Zy2Dg4YDxpNxew45XXk+4vYpprWGqQ0yNjiy+McDvAsecksE+/wR8JoP9JjHcKa7kmIpp0oh+Ke9vZMLt2lOK53EgIq1nN6y3wzveiUgiOhGt7WFgP+8k6vD5gLFmoNUUJT1TgD2or3jdP5tUJGc+cYi5uENMSdfqgeM9AVyW0b7/k9F+a5lM2JHuUgAqpkkj0j7pTFrcSmuosBbekBCmA2sAy2Ar9kr2jmvisToRTeaGwPEOp/HX7JCLJjwQMJaU2zvAEqS3AIdIs9qxFZaluLYOHG9dki2c0iiv/qQnOsWVnFIxTRrh9QKW1vRMNVKV0GYDKwHnYr2grgfOcs2onM4BrmvwsYPSTERScz7JVnvu6kFgk5Rz6clt2BRvkWY9BWyBRspK73Z0iPkEsJpDXGnerYTtKxuix97GwD8DxOlqWYeYkmNJr/buho2ymB59PQeYhYoS8UiGuJdAG3YAFK9O2RF93tHl/ng6SF/sd1ikq48rAQelvM8HUt6fSB69BhzT5b4P8WumWlbfAvb0TqLkbiZs8ei7wNg6th+MHWiH8o2AsaTcNsKOr0V6cwdwBGF7QoK97r8YOKY0b6fA8SYEiPE6tpp7aCs4xJRsPJbGTpIU03Yl/LSOVjMeOA/rr/QW8EoP243BesB8FhulNQ64FzshD2Eb4K6U97khya8spNWzYXZK+xFp1s+xq73LRF8Px3oyzMH+v5cFrqr6vkge7A5cAXzHO5EeqL+PFJUKaZLU9NqbpG4ph5hSPCEWCLgb+FqAON35KvAXp9hZ2RabofER1pomPleejdWL2oC52KzG+R4J1mEulnP1x3ZsYNNcKoPBUvkbJimmaY589kZjxTSwJ/Gb2CiWadiotiFYEW0VFm7C/wrwPNZ3bCZ2Mj4aGzU3IbpNjPbVRmU03Uzsn6aTynTfeARdn2jbIcAHWBGvjYVH1TTrBeCRhNt+Ezgypbia3ix58mAv3xsHbIatVLlpkGzK4ULgf+p8jJrHJ9cJHELYYtq92IjDJBePPso4l2oPBYwl5faMdwJSKB79f9NaCEzK7wzgPexccyowDDv/mkrleRRPB52PnWfG559TsEEjs7Bz035YH8lh0T6H4VdIA2vtsAE2CKYs7vZOoKiSvBC3+lTO0BaPbl9MuP3K0a07a6eSUXYm1rHtjSnG7UhxXyJZewUrqLUBy2EHJrOxgsYgrAg0HTvY6MQK5qOjz5/HDkb2wkYStYrDsNfReqZ76nWhPqFH0GwJ/I5kK2mtl3EusVOA/w0US8ppHna814mmz0l9PFam18i04lnfKe73neKGMBg4APiedyLiL0kxbcnMs5BWlfRAYEzKcefV3kQkdzqxKeFJdO1XcSU2PfyENBPKuS3r3H5uJlmU2x+B7QLGS7KgwNeA+7JOJPLzQHGkvLanXKMbJByP0dRaqKfiC8CZ2MXLKdgFz77Yxc7487iX9lwqi4q0Yec//bHZRO1UzofiPtvxLKJ41tEo4Brq77G7E40vyiS9G+GdgOSDxxBhkdgkp7hprQoqUiQn0viS3otgjbGPpDjN1uud6qeRafXbHisoHR0oXpIVDn+beRYVA1CPK2nMBODTKe8z5Aqg6j3rz+NkfkkqPYha3fFYn6lQ1sBmGCQ9tlkSW8VTsvEV7wQkH5IU03SCIVl4GDg94bZpn6x4DI0XKbJ5WG+3cdjV8OHRfR9iiyR0Al/3Sq4H9Y5obau9iXTj+YCxhmK9PKf1ss3SgXI5FhuNIFKP27HXz70y2HfI1zC9XvrzOJZdA3vN/xK9vw63Ao8L86NJVkzbEDvPkuwsB/wLWIuwFzIkZ5IU0z7IPAtpRRvXse2PU46ddPVQEVnQ+/R8ErgB8I+AudRS7yrHGrHamJDFNLApK3vS/YnczoFy+Dma4in12xe42juJlOjk0d9Mp7irYKOeWrmYNgbYwSFu/9qbAOFGi7e6L2AtVF7yTkT8JFnVUCu3iKfnsCaPaTmB+pqSi0gyjwCrYT2rQhU1eqN+FmE8RdhRidsDe3dz/9HAzYFyeDdQHCm+w4CjsP+RshTSQCPT8sDz/GwJx9je1gVec4r9TsLtRmWahVTTsWaL02qe4uGeOrZdPeXY56S8PymntYFVgbexg5LRWI+b97ED2LnRra3qVt14FqxR73LYCKmp2GvptOhx7cAnwF0hfpiAXqJyhe4nNN6jLQ2LYP3dkvYM0clh4+4DrgW+HSje6G7uC9m75o6AsaS4fgpcFDBeyD7IGpnmb5xj7FbumbamY+w5CbfTBZ9wfgiMBV71TkR8JHnj7ZN5FtJKjgAu8E5CpBfDgScDxXqY+qY8F8lJ2EihJxxzuAVbuvz8BNuql2Jz3goYa3Q39y0XKPZK+I1KkPzbAFtcaTg2ajOkkAUOzVrx9xJ20c5jVc/PAM84xM2DtBcOSWoKdoE3ibQHIkjPtgBeQfWSlpVkmuf8zLOQVpK0kLYc8ECGeYh0Z13CXl3aKGAsD6GKkr1Z2TuBFnF9wFi7YVPnYudiRa6sPY8KadK9vwOHAI8CrxO+kAYaLdaKZgJ/dIh7E/Ath7jeDge+7xT75ITbnQqsmGUiIlKRZGRaKzeYlHTV07D5cmCTrBIR6cEDaGp72j4CFneMn3Tqk1cz57J4FmtK/X6geOdiV+pXZMHCWpaeDRRH8m1r4CFsRNB87D0jD68fIYtpmhafH5Oc4l4H3O8YP7ThJBvlnoUbgYsTbLcFcFrGuUj31kTHCC0pyUmG3jAlDQ8CV9Wx/RoZ5HBCBvuUclEhLX1jgRsc4yedvqkmss37ILqFak59RaA4sT8FjtcqnsBeexcBBmPHnR8D/aLPO6nMkuiMbs32B5tPpd9lJ9ARfWzDVsybib12DK+KOQS4kIWfB3kopEHY4/V6V0uW7HguBvACsA35GIWeteMdY09MuJ2md/p5BtgfuNI7EQkrycHI7MyzkFZwAvamm9TIlOPvhTXIFulNfDIV0meBlwPHDOlGbNqT18H20ITbaYpUOl6nnCu9HYaNxJB0vYhNr5diGeKdgPy/F4EdnGIviS029FWn+KFsjfWB9XJ/wu02zTIJqekcVExrOUl6piXZRqQ7F2Nz/P8HeCzhY7Yimz596nMjSfzYIea/gf0c4obk0T8olnRkmkYlpmN/4GrvJDIQclXGVnEVsKV3EtKQQd4JyP87Gb8+XgBLOcYO5QjH2IcDdyfY7g1gx4xzkd6V8UKi1JCkUKarT9KI64FDgbOAXyV8zBjgnozyeS+j/Uq5nA5c4xC37I18+znGTjoyTdLxErCvdxIpe8M7gZLaj+Sr00m+dHgnIAs40zH26thFlLI6ErvQ72EiNrW8ltHACtmmIgnt5J2AhJWkmKalXqVe+wB71vmYdchm9NhMYFVgfAb7lnK6ySHmog4xQ+rvGHtKwu00zVO6cw52oUdEKuZ6JyAL8WzL8xt8e4pl5SzgF47xpyTcTi2Z8uNWfEcySmBJimm3Zp6FlMm5wG/rfMzWwCMZ5AJ2RWdcRvuWcnrOIeZ6lLvXxSzH2EmmR4CKaWl7yTuBlJzsnYBIDmlkWv4knQWSlbPx7SuWtp8DJzrnkKRItio+MyqkZ2pf0EKSLEBwN9ZLZiDWyyo+4YhXV2rDRq8tAsyLvo57XsUnUG1Vt1gHNv2mP9Ae7X8otnLSwOi+2dF2M6KPc6NY8f770nOz8M5of7OjfY2IYg2KYozAVo0ais33HxE9ZgbwaPT1mGjbDipXB/pH93+qh7it5DVgd+DpJvYxjOQnu41I2i9JJDbPKe7fsCbCdzrFz9L6TnFXIvmIVxXT0rUa8L8Uvxg1lOSjA0Q8hVw8R6+X+XMM8Arwa8cczsQWobnRMYc0XID1e/aWZOGBx1A7i7xZ3jsBCSfp0uKzyGZkwYwM9lmPRbCDj+FYkawvVrB7i0qPn2Wi783ApgzOwFaaXBtYC1uFavVom7hg2Df6utaVu1pTaNtrfH9ON/d1Uhl+397N1/E2VN1ffQDWWXVf9cqG1Z9PwZZFP5jmCmk7Azc38fhangZ+meH+pZzSXkm2His7xs7KzvhMnZ2JFh7xdj/FL6ZN8U5ARCShS/AtpgHcAGwIfM85j0b9knwU0v6EFfVqUSEtfz6P9Q4vez9kIXkxrazmRbf3u/leXKh6s5vvvRndbskor1bwWbItpM3DCp4i9frIMfZ22NTkMvW/uBKf3pv1Xqzx7OtWViFHysiCtBK7ZCmLVdelPI4AbsNG3BfJseSj31UH1gKnltWyTkQatgfwe+B270QkWzrYEg8bAv/OOIZW75RGea5gvCnwoGP8LHgtrjDCKa5U/Bk4xDuJJhzonYBITn3OOwHp0de9E4j8FTjKO4k6XA781DsJYBLJ/oZ7AC9knIs0p9YMs97oYmRBtPrINAlnKPBF4BNs6HLWHggQQ8rpFef462KjufZzziMNnkPcP6xze/UAysalwBrAod6J1Gl/7P9QRBY2CtiMyjTorm1H4jYn1S1C4u3aaP5ifrMnmu9j/Y+nYDMZlsOKP2VwH7A9+ei/ei5W8JmFLe70sW86PfoRcIB3EpENSdai4qCsE5GmnYT1BZ/WwGNDF9O+AjyO1YZGYQMLZkR5TMMuUE/FZnEUfTXndmx0dQf288R9/2dhP/Nw7Fww0c+pYpqEMplwLwzfwIaXizRiBrAY8A4wwCmHfYE1sQJ0UZ0GnOoYX4uP5Ifn1OlGveWdgEjOlaX4FLsNO34sgzw1QL+v6vO9gGu9EunBL4AjvZOokrTX61KZZtG9C7Cpu/2xwkNcHO+HFSQ6gXexBf5i86gUK+IierMXL/tEtwFR/BlYe5RRWGF8fFUui2MzJK5vMmYj1sTOf/vV2C4P/u6dQM48ghW2a1IxTbLShl3lmYWt+BmqkHYLKqRJ86ZgvTMudMxhTaxx/wNYMeI6x1yS2hzr4fEWvoU0sBFR9VDPtOzcBJzinUSdmllcR0SKZydgG+BZ4G3XTJoXYgZII67EikDvAQ8BE5zyWB5rq/E6+SqkJR1RvzvW5D6kt8lHP7lGrY/PohiN1lqamSIqzdsAuBgYW2tDFdMkK3eSrHlmmo4nH/0OpBy8VxsG2CW6AYzGlp3Pq/VJtox7CJtTf+PjWqsvS+P+hV0dLsIItQnAqjQ2LUNEiu0ubEr6xd6JNOl1bOTOq8CKzrlU64dN/QR7z/UoGOwK/MEhbi13YYtQ1fId4OqMc+nqYWCrwDHT5rm6+8rU30JGF3j9fRdYCfhqbxslKaYNA64BBka397Ghk32ir5tRffJSPeSzrerW9XvV5lZ9P96+M9rvbKzC38GCJ8WdwMzo+/OirzujfXVUfT2jy8dBWN+vIdiL/8CqWFOjWFOjWxv2u621It/waPtJ2EiYYdjVkuHRvsdjb4h5NQS7orMmNrT2bexnmET4QhqEf3ORcutulV9P/4tdKQG7cv5H4DG3bGA3rEnuAGAZ7CpvXjSygph6pmVrMlZUW8M7kRoeRoU0kVa2G8UvpsX2wabj5nGUS39gHNZSYy72uhuf1/2O5nu+7QPsgI2E68BGww0Cdmxyv1l4l2SFNPB5D/0dMN0hbpo8F/d6GVgP60mWlI5J82GLWhskKaYdRPJ/cDHxkuF9Emw7CyuYTQI+hVWvYx9iIz2uiT7mYaRMbBFs6k5eVg2CSiNckTT8EXgKWNs7kSrbVn0cC5yArUAFdsV3IHaxoGsz6LRdAhyccQwpn5fIfzFNq6OJtLZaF8KL5BGsf9UkbHRw3qwS3br6JtYz9tno6zbsov3EhPs9BTi92eQCeRObeZDUqhnl0Zv/OsRM23PYefn8Whtm5CHqK2rn6ZxfepGkmNbdi5z0LkkRLTYA6zG0WjffG4FdIdstjaRK7gI0TUvStyvwH+8kerA4cFl06832WGEwqSHYm/4o7MrYMg1l5+dA7wRSVLZh/udhI5k/55tGj56iPCt4NtKnVO+hxaaRDOmY5Z1AyjqxJvtFKS7FnunmvjnYhcP4Y3c+Ip+Fw57cUMe2d+Iz3bJMF5nGU1/xMi31Hs8V6TlcZjVX9EyyNLX6qknenUWxm2JKfo0HrvBOokl3YqPrlgXWxUa/jsIKGstjRftR2BWzYdhw/jWBkRSvkLYF8BvvJKRHj+NzVT2pdbApRyJFFGqhJymeu7DjmaLr1+Vjd4pWhHgv4XZr4zNT7DiSjwgsAs/evpvWsa1ez/OhZh0sSaEsScFNxMuuwM3eSUipHYD1ezrGO5EmPOmdQCB563PXEx0kiUjaNDItHXnsL9asZ7D2EC96JyIL2A+4KuG2HtOP3wF+5hA3SydgF5F3coj9N+BXwP8k2LboPepaRpJCWc3hbSJOzkOFNAnjWO8EJJFx3gkkVKaePI3I43TCW7wTEGlSGYtAHsr6+vwSep3Lk5tIXkhbFp+i1iMOMbP2IfANx/hJY2shpIJIUkybkHkWIvXbAjjKOwkRyYWJwKcpzsWfQd4JOPuTdwJdfAPYxTsJkSYV5fVP/HyH8vSFLLITsEUWkvovPgu+FW3KbBEknUGhBQgKIkkxbUDmWYjU5zBsqW+RkFS8za81KNaFnzyOzArpGGwV67y4zTsBEZEApgMHUaz3y7K5AzinzsfUs7Bdmi6vvUlhefXXXQP4ZYLthmech6QkSTFtSOZZiCS3IXCRdxLSks7DGvVf7ZyHVLyFrcr0kXMe9Wr1nmmvAYd6JyFSMlowTJLoxEZyj/VOpAVdAOxY52NWyyKRBFYCrnOKHcKB2OAMD0dQezGJsq3mXlpJimnqwSDeOoCZwPGUc/6+FMe7wL7YcHs9F309A3wVeNM7kQa0ejEN4GnvBCI/8E5ARHKlVYqSvwa2Bq7FphFKtu7Hiij12Ax4IYNcapmHXfQquz86xl6zxve1oExBJHnDmJp5FiI9uxQ4xDsJkS7ui273Als659KKXgDWSnmfIUe3JT1Zm59pFr4+8E4AOBr4hXcSGZnVwGP6pZ6FhKQifTpa6ff4Jyo9LKcBgx1zKbM/09ix4nkp55HUP53ihuY1fRbU7qM0koxMa/VGyeLnVFRIk3zbG/VSC+0WsnldCDmkPulFqjmZZuHPo6FytTuc42dpWAOP0cXTYtPfLx2tuoreesBT3kmUyO3YtM4TgG0a3McX0ksnscfwXe0ypDepf9ptKFO8E5BkkhTTBmaehcjCbgfO8E5CpIZJ2JVDz6HirWIONpJoF7KZYhtyVE7SkQ9lXwDoPuBkx/h5WgQhbY0UBMr+fCs7XfxOR6v+H7wIrOOdRElMAnbCpnWeQ7FW2t0ceM87iYDuwOei+EnA0F6+r9fzgkhSTNMwRAnlZmADYGXsTUikKLZHvZeytBHWhDfLKXkhi2lJpzg2MrqoaKY4xJwILO8QN6RGpmupR0uxaYpeOlqlZ1pP+mCjv//jnUhB3Q6MTGE/p6Wwj0bMdIrryaPWMRz4hJ6PPbUAZEEkKabNzjwLEbuKsyvwKPCqcy4ijTgda4ov6doV+AfZvy6EvHKctBdaK7z/evRmuZLyN9ye3MBjWuH5VmbzvBMoCf0fWL/iPcnPQjFFslMK+9gMa3UjYdzvGPuLPdzfikXNQkpSTEuyjUgjOoEVsOWX07iKI+Jtreg2BHjWN5VSWAEbsRpCyPe6pKPgWqF3z9OEXwLes+lwKDMaeEyrTm8ri1ZqnJ+ld70TyInHgLWxUbxFmqYY2gxgNPa+ktZ7yx4p7ade9zrF9fYy9v7nccy1XA/3a2ZgPtTsXZzk5GHRFBIR6c7BwHhaY/llaR3PANOB/YG3KfeKjFnpwKbOjg8Ysz1grOEJt2uVERJzgAcCxrsrYCwvjUwRbmQFUMmPsi9YEsqnvRPImf8C+2DvR51YwUGjIM0UYEOskX2aPPplzQVOdIibF7OBexzi3gTs1839OnfIh5q1siTFtNBXjKXc1sCed4sAVzjnIpKlZ4Blsee6Rl727mZgaWzBm8FYYSv0og7PBoz1fMBYRfGvQHG2xEZceHglYKxWKcRKhY7X0/GodwI5dB02cqcv1jS9DbjWNSNfq2Gj0BYjm2MHj5V5d0AzKkK+R1f7WTf3aaRxPkyotUGSJpuNTBWQ1vYM9ibTiZ0UP4UVFa4FnnPMSyS0+MrSJGwVyv2j+zqx199tnfLKgzuxIuPbwOH4rx71AnZV9mvYgewS2N9pBpXG7P2x17T+VP62M7Gr0+3YScZs7O89PNpuBjatswObMvNp4Po68voucDzwmejr+6N9drDge3hbdOuMPs6IcohzGwKsCiwV3fdQ9P3hwOrA+XXklIWfAmtioxEXw0ZJtWEF1vhnij+2Rd8fiP0O4sJRW/T1XGz0xPLY7/wdbOTbb/DtjfJd4CAqP0N/bARCf+x5NCO6fyiVY6942lD8HIynfmxIpUh/MzAK+9nXBd6g8VFmuwNHRvsbihW1R0Xfi3/vg7DGyVB5Ds6j8jfqQ+UiwgjsbzoXew6uDCyO+ktm4dmqzx/AFtoYiv39pmF/g3bsudXq0/ZmYs/NqdjzeQqV5+95CR5/IvATrJ/nZOz5PoPKCOd45Fb8/xH/vuNBDB9j/wd9oxw6qBSpOqi8Rvyqzp8rpL2wxXRGAZ/H3l/K6G9YkWUgNuL3RuCljGNeC4zFesU+jL0n9qfy/lb93j+36v5YJ/a8nh19L36vWTe676/A1lXb/wifUVl5cx72OxqNtSB6EHuOj8SOUYdirx3zqPw9YMFjkPg1tj36ejYL/r3iY8r26P6tgBu6yaX6mHgctvp4/BpVazBU2RcTqvXz91TfiguU8fHVPOx31Yn9nRbDjlMmY3/f/iRYcb7PtOkf19rmVPxWFJFiakdzvUWSuBr4jncSDn4GHOedhJOvAn+p8zF9sCLHmzQ3aqId+DILT6lcDTvxrnlAUEBD8bnKn7WVgWOwUY4XVt3/bewgvN7nWFdDo49p/+5GAhdgJ6Q3pbzvVtcXKwqdjS2II9mJW+B80utWrWMRbATHMt6JpOxBYBOn2DsAj5B89e8ktsReIx4H7sYKavsBV6UYowz6Ye+xLwaItSg9v45cgl3A+l6APKRBSYpp8ZXdQdgftAMb6tuP4i9O0OyVOe/ls5vNP0mPoHgkAFRGQwzFruhNiL43HavkdmCj0Mq+SppImnYDPhd9/j5wEjaSswyOwQo08Qi0KdgVXa+h9CIiZbYyen0VP9/CzgXasXPFxbBzhIs9k6rDgdjI8mHY6PTzXLPJ3g7AHd5JSI8GoF6muZekmCYiIuEMx4YYF93FwKHeSYiIiIira7BRs3m2K+FWDxeRklAxTUQkf6pXE4tHgn6Azelvx6ZejaCyutYy2Oi2LwNfx/pipe0T7ArmZVEOfbCi30dRDoOxXhKdWG+Rf2eQg4iIiBTP0tio+3exXkTzovvexY4bRmPTEE9JMeYL2OiyR7FjlbhX5RLYqPkPsGOpGcBbKcYVkRahYpqISLmsjhXVtsCaAseFuSE9bD8fmzLegRXpPsCmY74NfIgVzp4DngD+Sfkbm4qIiIiPnbDpokOxi4Sj63x8J7YYxx+BK7FeoyIimVAxTURERERERPKkD3ZBrxMbUTa9y/2zqays3Q+7MDgfEZFAvBvoi4iIiIiIiFSbT6UB+5we7qeb74uIBFH01ThFRERERERERESCUTFNREREREREREQkIRXTREREREREREREElIxTUREREREREREJCEV00RERERERERERBJSMU1ERERERERERCSh/wNE1VXX2xxqDwAAAABJRU5ErkJggg==" alt="Simplicae"></a>
     <nav class="navlinks">
-      <a href="#offer">What we offer</a>
-      <a href="#samples">Sample tools</a>
-      <a href="#model">Operating model</a>
-      <a href="#tiers">Your club</a>
+      <a href="#work">What we take on</a>
+      <a href="#how">How it works</a>
+      <a href="#start">How to start</a>
       <a href="#about">About</a>
-      <a href="https://os.simplicae.com" title="Sign in to Simplicae OS">Client login</a>
+      <a href="https://os.simplicae.com/">Client login</a>
     </nav>
     <a class="navcta" href="#next">Talk to Simplicae</a>
   </div>
 </header>
 <span id="top"></span>
 
+<!-- 1. HERO: who it is for, what they get, one action -->
 <section class="hero">
   <div class="ticks" style="color:var(--muted-d2)"><i class="t1"></i><i class="t2"></i><i class="t3"></i><i class="t4"></i></div>
+  <canvas id="hero3d" aria-hidden="true"></canvas>
+  <div class="hero3d-label" id="hero3dLabel" aria-hidden="true"></div>
   <svg class="hero-mono" viewBox="0 0 80 64" aria-hidden="true">
     <path d="M20,12 H52 a13,13 0 0 1 0,26 H32 a13,13 0 0 0 0,26 H62" fill="none" stroke="#F4F5F1" stroke-width="14" stroke-linecap="round"/>
     <path d="M20,12 H52 a13,13 0 0 1 0,26 H32 a13,13 0 0 0 0,26 H62" fill="none" stroke="#102818" stroke-width="4" stroke-linecap="round"/>
   </svg>
   <div class="wrap"><div class="hero-inner">
-    <div class="ey sig"><span class="sq"></span>Sports Operations Agency</div>
-    <h1 class="h1" style="margin-top:22px;max-width:900px">On the field you&rsquo;ve got a game plan. Off it, you&rsquo;ve got us.</h1>
-    <p class="lead sub">Simplicae installs and runs the operating layer behind sports organizations, so the work behind the season gets organized, owned and delivered.</p>
+    <div class="ey sig"><span class="sq"></span>The back office for sports organizations</div>
+    <h1 class="h1" style="margin-top:22px;max-width:900px">You focus on the game. We run the business behind it.</h1>
+    <p class="lead sub">Simplicae is the back office your club can&rsquo;t afford to hire. Our operators and our software take on registration, sponsorship, finance, communications and gameday, so your people can focus on the pitch, the court, the ice or wherever your sport is played.</p>
     <div class="hero-cta">
       <a class="btn btn-sig" href="#next">Start with an operations review</a>
-      <a class="btn btn-ghost" href="#samples">Try the sample tools</a>
+      <a class="btn btn-ghost" href="#work">See what we take on</a>
+    </div>
+    <div class="grid3 hero-facts">
+      <div class="pcard"><h4>What we are</h4><p>An outsourced back office, run by operators who work inside your club.</p></div>
+      <div class="pcard"><h4>Who it&rsquo;s for</h4><p>Clubs, teams and leagues in any sport, from youth to pro.</p></div>
+      <div class="pcard"><h4>What you get</h4><p>More capacity behind the team, without another full-time hire.</p></div>
     </div>
   </div></div>
 </section>
 
-<section class="g-forest pad" id="capacity">
+<!-- 2. THE PROBLEM: self-identify by pressure -->
+<section class="g-forest pad" id="problem">
   <div class="wrap">
-    <div class="ey sig"><span class="sq"></span>Find your fix</div>
-    <h2 class="h2" style="margin:18px 0 14px;max-width:820px">What&rsquo;s the pressure right now?</h2>
-    <p class="lead muted" style="max-width:720px;margin-bottom:28px">Pick the one that keeps you up at night. We&rsquo;ll show you what we do about it.</p>
+    <div class="ey sig"><span class="sq"></span>Complexity, simplified</div>
+    <h2 class="h2" style="margin:18px 0 14px;max-width:820px">Behind every team there is a business. Most clubs run it on adrenaline.</h2>
+    <p class="lead muted" style="max-width:720px;margin-bottom:28px">It lives in a few people&rsquo;s heads and inboxes. Pick the pressure that sounds most like your club, and see what we do about it.</p>
     <div class="pf-chips" id="pfChips"></div>
     <div class="pf-panel" id="pfPanel"></div>
   </div>
 </section>
 
-<section class="g-off pad" id="operating-layer">
+<!-- 3. WHAT WE TAKE ON: the one list -->
+<section class="g-off pad" id="work">
   <div class="wrap">
-    <div class="ey"><span class="sq"></span>How we work</div>
-    <h2 class="h2" style="margin:18px 0 14px;max-width:840px;color:var(--ink)">Simplicae installs and runs the operating layer behind sports organizations.</h2>
-    <p class="lead muted" style="max-width:720px;margin-bottom:20px">Not advice. Installed operating capacity. The team on the field gets a team behind it.</p>
-    <div style="margin-top:16px">
-      <div class="layer"><div class="k">People</div><div class="v">Operators inside your club who own the work behind the badge.</div></div>
-      <div class="layer"><div class="k">Systems</div><div class="v">Standards that turn repeatable tasks into a way of working, not a scramble.</div></div>
-      <div class="layer"><div class="k">Tools</div><div class="v">The tools you already own, tuned and used properly &mdash; before any new spend.</div></div>
-      <div class="layer"><div class="k">Rhythm</div><div class="v">A delivery cadence that keeps the season from running on adrenaline.</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="g-forest pad" id="offer">
-  <div class="wrap">
-    <div class="ey sig"><span class="sq"></span>What we offer</div>
-    <h2 class="h2" style="margin:18px 0 14px;max-width:760px">People inside your club. Systems behind the work. Tools used properly.</h2>
-    <p class="lead muted" style="max-width:700px;margin-bottom:36px">Three cards, one operation. Switch on as much of it as the club needs.</p>
-    <div class="grid3">
-      <div class="ocard people"><div class="kicker">The people</div><h3>Operational Layer</h3><p>People behind the football. More capacity without another full-time hire &mdash; operators embedded in the club, not external contractors.</p></div>
-      <div class="ocard systems"><div class="kicker">The engine</div><h3>Simplicae OS</h3><p>Software behind the people. Custom tools built around how your club actually runs &mdash; automating the volume and surfacing what matters.</p></div>
-      <div class="ocard tools"><div class="kicker">The tune-up</div><h3>Use &amp; optimization</h3><p>Better use of what you already own. The systems you pay for, configured, connected and run &mdash; more value before more spend.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CLUB OPERATING MODEL (self-identify by scope) -->
-<section class="g-off pad" id="model">
-  <div class="wrap">
-    <div class="ey"><span class="sq"></span>What we run</div>
-    <h2 class="h2" style="margin:18px 0 14px;max-width:820px;color:var(--ink)">The club operating model.</h2>
-    <p class="lead muted" style="max-width:720px">Three pillars every club has. Nine responsibilities we take on. Switch on what you need, add the rest as you grow.</p>
+    <div class="ey"><span class="sq"></span>What we take on</div>
+    <h2 class="h2" style="margin:18px 0 14px;max-width:820px;color:var(--ink)">The work we take off your plate.</h2>
+    <p class="lead muted" style="max-width:720px">Nine responsibilities across the three sides of a club. Start with one. Add the rest as you grow.</p>
     <div class="com-cols">
       <div class="com-col">
         <div class="com-head sporting"><div class="ct">Sporting</div><div class="cp">More preparation. Better decisions.</div></div>
-        <div class="com-item"><div class="it">Matchday operations</div><div class="id">Run the stadium. Not just the match.</div></div>
-        <div class="com-item"><div class="it">Technical performance</div><div class="id">Better prep. Better decisions.</div></div>
-        <div class="com-item"><div class="it">Player pathway</div><div class="id">Develop players with purpose.</div></div>
+        <div class="com-item"><div class="it">Gameday operations</div><div class="id">Ticketing, venue setup, vendors and run-of-show.</div></div>
+        <div class="com-item"><div class="it">Technical performance</div><div class="id">Session planning, video and analysis support for coaches.</div></div>
+        <div class="com-item"><div class="it">Player pathway</div><div class="id">Development plans, evaluations and progression tracking.</div></div>
       </div>
       <div class="com-col">
         <div class="com-head commercial"><div class="ct">Commercial</div><div class="cp">More revenue. Better execution.</div></div>
-        <div class="com-item"><div class="it">Partnerships</div><div class="id">Turn inventory into revenue.</div></div>
-        <div class="com-item"><div class="it">Communications</div><div class="id">Say the right thing. Every time.</div></div>
-        <div class="com-item"><div class="it">Community</div><div class="id">Strengthen the bond to the badge.</div></div>
+        <div class="com-item"><div class="it">Partnerships</div><div class="id">Sponsor packages, sales pipeline, delivery and renewals.</div></div>
+        <div class="com-item"><div class="it">Communications</div><div class="id">Content calendar, social, website and announcements.</div></div>
+        <div class="com-item"><div class="it">Community</div><div class="id">Camps, events and programs that grow the membership.</div></div>
       </div>
       <div class="com-col">
         <div class="com-head corporate"><div class="ct">Corporate</div><div class="cp">More control. Less risk.</div></div>
-        <div class="com-item"><div class="it">Finance &amp; planning</div><div class="id">Know the numbers before they matter.</div></div>
-        <div class="com-item"><div class="it">Registration &amp; admin</div><div class="id">Never chase paperwork again.</div></div>
-        <div class="com-item"><div class="it">Compliance &amp; governance</div><div class="id">Never miss a deadline.</div></div>
+        <div class="com-item"><div class="it">Finance &amp; planning</div><div class="id">Budgets, cash flow, invoicing and board reporting.</div></div>
+        <div class="com-item"><div class="it">Registration &amp; admin</div><div class="id">Registrations, rosters, scheduling and records.</div></div>
+        <div class="com-item"><div class="it">Compliance &amp; governance</div><div class="id">League deadlines, licensing, policies and documents.</div></div>
       </div>
     </div>
     <div class="pf-cta"><span>Not sure where to start? We&rsquo;ll map it in one review.</span><a class="btn btn-sig" href="#next">Start with an operations review</a></div>
   </div>
 </section>
 
-<section class="g-forest pad" id="samples">
+<!-- 4. HOW IT WORKS: people first, software as the how -->
+<section class="g-forest pad" id="how">
   <div class="wrap">
-    <div class="ey sig"><span class="sq"></span>Sample tools</div>
-    <h2 class="h2" style="margin:18px 0 14px;max-width:820px">Working product. Not screenshots.</h2>
-    <p class="lead muted" style="max-width:720px">A taste of the Simplicae OS, grouped the way your club is. Move a slider, build a package, switch a shape &mdash; the real tools run the same way, on your numbers.</p>
-
-    <div class="sample-cat">
-      <div class="cat-label"><span class="csq"></span>On the pitch <span class="cat-sub">Sporting</span></div>
-      <div class="cat-tools">
-      <div class="tool">
-        <div class="tool-head"><span class="tool-tag">Sample tool</span><span class="tool-name">Tactical Pad</span></div>
-        <div class="frame f-mist"><div class="frame-bar"><i style="background:#E4574C"></i><i style="background:#E0B341"></i><i style="background:#3D994C"></i><span class="u">tactical-pad</span></div><div class="frame-body">
-          <div class="tp-pitch" id="tp_pitch"><svg viewBox="0 0 100 66" preserveAspectRatio="none">
-            <rect x="2" y="2" width="96" height="62" fill="none" stroke="rgba(244,245,241,.5)" stroke-width="0.6"/>
-            <line x1="50" y1="2" x2="50" y2="64" stroke="rgba(244,245,241,.5)" stroke-width="0.5"/>
-            <circle cx="50" cy="33" r="8" fill="none" stroke="rgba(244,245,241,.5)" stroke-width="0.5"/>
-            <rect x="2" y="20" width="10" height="26" fill="none" stroke="rgba(244,245,241,.5)" stroke-width="0.5"/>
-            <rect x="88" y="20" width="10" height="26" fill="none" stroke="rgba(244,245,241,.5)" stroke-width="0.5"/></svg></div>
-          <div class="tp-ctrl">
-            <div class="tp-row tp-forms" id="tp_forms"><button class="on" data-f="433">4-3-3</button><button data-f="442">4-4-2</button><button data-f="4231">4-2-3-1</button><button data-f="4141">4-1-4-1</button><button data-f="352">3-5-2</button></div>
-            <div class="tp-row tp-tact" id="tp_tacts"><button data-t="press">High press</button><button class="on" data-t="mid">Mid block</button><button data-t="low">Low block</button></div>
-          </div>
-        </div></div>
-        <p class="tool-cap">Pick a shape, set the block, and drag any player. The full board adds set pieces and a game plan.</p>
-      </div>
-      <div class="tool">
-        <div class="tool-head"><span class="tool-tag">Sample tool</span><span class="tool-name">Training Load</span></div>
-        <div class="frame f-forest3"><div class="frame-bar"><i style="background:#E4574C"></i><i style="background:#E0B341"></i><i style="background:#3D994C"></i><span class="u">training-load</span></div><div class="frame-body">
-          <div class="slab"><div class="row"><span class="lab">Sessions this week</span><span class="val" id="tl_sess_v">3</span></div><input type="range" id="tl_sess" min="2" max="4" step="1" value="3"></div>
-          <div class="slab"><div class="row"><span class="lab">Average intensity (RPE)</span><span class="val" id="tl_rpe_v">7</span></div><input type="range" id="tl_rpe" min="4" max="9" step="1" value="7"></div>
-          <div class="tl-bars" id="tl_bars"></div>
-          <div class="readout"><div class="rc"><div class="l">Sessions</div><div class="v" id="tl_s">0</div></div><div class="rc"><div class="l">Peak RPE</div><div class="v" id="tl_p">0</div></div><div class="rc"><div class="l">Weekly load</div><div class="v pos" id="tl_l">0</div></div></div>
-        </div></div>
-        <p class="tool-cap">Load = intensity by duration, tapering to the game. The real builder plans every session.</p>
-      </div>
-      </div>
+    <div class="ey sig"><span class="sq"></span>How it works</div>
+    <h2 class="h2" style="margin:18px 0 14px;max-width:760px">Our people. Our software. Your club.</h2>
+    <p class="lead muted" style="max-width:700px;margin-bottom:36px">You don&rsquo;t get a report and a goodbye. You get operators who do the work, on software built to keep it organized.</p>
+    <div class="grid2">
+      <div class="ocard people"><div class="kicker">The people</div><h3>Embedded operators</h3><p>A named team that works inside your club week to week. They own the tasks, the deadlines and the follow-through, and they answer to you.</p></div>
+      <div class="ocard systems"><div class="kicker">The software</div><h3>Simplicae OS</h3><p>Our own platform keeps every task, deadline and number in one place, so you always see what is done, what is due and who owns it.</p></div>
     </div>
+    <p class="how-note">We start with the tools you already pay for. New software comes in only when it earns its place.</p>
 
     <div class="sample-cat">
-      <div class="cat-label"><span class="csq"></span>Growing the club <span class="cat-sub">Commercial</span></div>
+      <div class="cat-label"><span class="csq"></span>Try it <span class="cat-sub">Two sample tools from Simplicae OS</span></div>
       <div class="cat-tools">
       <div class="tool">
         <div class="tool-head"><span class="tool-tag">Sample tool</span><span class="tool-name">Sponsorship</span></div>
         <div class="frame f-signal"><div class="frame-bar"><i style="background:#E4574C"></i><i style="background:#E0B341"></i><i style="background:#3D994C"></i><span class="u">sponsorship</span></div><div class="frame-body"><div id="sp_body"></div></div></div>
-        <p class="tool-cap">Build a tiered prospectus. Set the partners per tier and the inventory value totals live.</p>
+        <p class="tool-cap">Build a tiered sponsor package. Set the partners per tier and the total value updates live.</p>
       </div>
       <div class="tool">
         <div class="tool-head"><span class="tool-tag">Sample tool</span><span class="tool-name">Club Budget</span></div>
@@ -504,122 +494,69 @@
           <div class="slab"><div class="row"><span class="lab">Roster size</span><span class="val" id="bg_roster_v">22</span></div><input type="range" id="bg_roster" min="18" max="26" step="1" value="22"></div>
           <div class="readout"><div class="rc"><div class="l">Revenue</div><div class="v" id="bg_rev">$0</div></div><div class="rc"><div class="l">Expenses</div><div class="v" id="bg_exp">$0</div></div><div class="rc"><div class="l">Net</div><div class="v" id="bg_net">$0</div></div></div>
         </div></div>
-        <p class="tool-cap">Driver-based budgeting. Change one input and revenue, expenses and net move together.</p>
+        <p class="tool-cap">Change one input and revenue, expenses and net move together. Your version runs on your numbers.</p>
       </div>
       </div>
     </div>
-
-    <div class="sample-cat">
-      <div class="cat-label"><span class="csq"></span>Running the numbers <span class="cat-sub">Corporate</span></div>
-      <div class="cat-tools">
-      <div class="tool">
-        <div class="tool-head"><span class="tool-tag">Sample tool</span><span class="tool-name">Cash Flow Timeline</span></div>
-        <div class="frame f-light"><div class="frame-bar"><i style="background:#E4574C"></i><i style="background:#E0B341"></i><i style="background:#3D994C"></i><span class="u">cash-flow</span></div><div class="frame-body">
-          <div class="slab"><div class="row"><span class="lab">Starting reserve</span><span class="val" id="cf_start_v">$20,000</span></div><input type="range" id="cf_start" min="0" max="60000" step="5000" value="20000"></div>
-          <div class="slab"><div class="row"><span class="lab">Monthly overhead</span><span class="val" id="cf_cost_v">$22,000</span></div><input type="range" id="cf_cost" min="10000" max="35000" step="2500" value="22000"></div>
-          <div class="cf-chart" id="cf_chart"></div>
-          <div class="cf-labels" id="cf_labels"></div>
-          <div class="readout"><div class="rc"><div class="l">Lowest point</div><div class="v" id="cf_low">$0</div></div><div class="rc"><div class="l">End balance</div><div class="v" id="cf_end">$0</div></div><div class="rc"><div class="l">Months in red</div><div class="v" id="cf_red">0</div></div></div>
-        </div></div>
-        <p class="tool-cap">When money lands vs leaves across the season. The trough is where clubs get caught short.</p>
-      </div>
-      <div class="tool">
-        <div class="tool-head"><span class="tool-tag">Sample tool</span><span class="tool-name">Contract &amp; Wage</span></div>
-        <div class="frame f-black"><div class="frame-bar"><i style="background:#E4574C"></i><i style="background:#E0B341"></i><i style="background:#3D994C"></i><span class="u">contracts</span></div><div class="frame-body">
-          <div class="slab"><div class="row"><span class="lab">Player budget</span><span class="val" id="ct_cap_v">$70,000</span></div><input type="range" id="ct_cap" min="40000" max="120000" step="5000" value="70000"></div>
-          <div id="ct_list"></div>
-        </div></div>
-        <p class="tool-cap">Player wages against the budget, and who is out of contract. The renewals you cannot afford to miss.</p>
-      </div>
-      </div>
-    </div>
-
-    <div class="pf-cta"><span>These are samples. Your club&rsquo;s version runs on your numbers.</span><a class="btn btn-sig" href="#next">Start with an operations review</a></div>
   </div>
 </section>
 
-<!-- TIER LADDER (self-identify by stage) -->
-<section class="g-forest pad" id="tiers">
+<!-- 5. HOW TO START: the operations review -->
+<section class="g-black pad" id="start">
   <div class="wrap">
-    <div class="ey sig"><span class="sq"></span>Where&rsquo;s your club</div>
-    <h2 class="h2" style="margin:18px 0 12px;max-width:820px">Built for every stage of the club.</h2>
-    <p class="lead muted" style="max-width:720px">One operating layer. The depth scales as the club grows &mdash; from a kitchen-table board to a full front office.</p>
-    <div class="ladder-head" id="ladder">
-      <button class="rung-btn active" data-tier="youth"><span class="dot" style="background:#3D994C"></span>Youth</button>
-      <span class="arrow">&rarr;</span>
-      <button class="rung-btn" data-tier="amateur"><span class="dot" style="background:#E0B341"></span>Amateur</button>
-      <span class="arrow">&rarr;</span>
-      <button class="rung-btn" data-tier="semipro"><span class="dot" style="background:#C46A2E"></span>Semi-pro</button>
-      <span class="arrow">&rarr;</span>
-      <button class="rung-btn" data-tier="pro"><span class="dot" style="background:#57B0C4"></span>Pro</button>
+    <div class="ey sig"><span class="sq"></span>How to start</div>
+    <h2 class="h2" style="margin:18px 0 14px;max-width:760px">Start small: one operations review.</h2>
+    <p class="lead muted" style="max-width:700px;margin-bottom:36px">One area of the club, one season. A low-risk way to see where the time and money are going before you commit to anything more.</p>
+    <div class="grid3">
+      <div class="pcard"><div class="step-n">01</div><h4>Review</h4><p>We look at how one area of your club runs today: who does what, with which tools, and where the work gets stuck.</p></div>
+      <div class="pcard"><div class="step-n">02</div><h4>Plan</h4><p>You get a plain plan: what we would take on, in what order, and what changes for your people.</p></div>
+      <div class="pcard"><div class="step-n">03</div><h4>Run</h4><p>If it fits, our operators and software take the work over. You add more areas when you are ready.</p></div>
     </div>
-    <div class="tier-panel">
-      <div class="tier-top"><div class="know" id="tierKnow"></div><div class="tier-line" id="tierLine"></div></div>
-      <div class="tier-body" id="tierBody"></div>
-    </div>
+    <div class="pf-cta"><span>A review can start within weeks.</span><a class="btn btn-sig" href="#next">Start with an operations review</a></div>
   </div>
 </section>
 
-<section class="g-black pad" id="proof">
-  <div class="wrap">
-    <div class="ey sig"><span class="sq"></span>Proof &mdash; already built</div>
-    <h2 class="h2" style="margin:18px 0 14px;max-width:760px">Four ways we build. Every one already running behind real clubs.</h2>
-    <p class="lead muted" style="max-width:700px;margin-bottom:36px">Agentic AI, custom applications, reporting and content &mdash; the receipts behind the operating layer.</p>
-    <div class="proof-grid">
-      <div class="prf p1"><div class="n">01 &middot; Agentic AI</div><h4>Agentic AI</h4><p class="m">The work gets done before someone asks.</p><div class="built"><b>Built:</b> opposition-scouting agent that prepares the matchday brief.</div></div>
-      <div class="prf p2"><div class="n">02 &middot; Custom apps</div><h4>Custom applications</h4><p class="m">Built for the way clubs actually work.</p><div class="built"><b>Built:</b> tactical suite, matchday command centre, microcycle builder.</div></div>
-      <div class="prf p3"><div class="n">03 &middot; Reporting</div><h4>Reporting &amp; intelligence</h4><p class="m">Answers. Not spreadsheets.</p><div class="built"><b>Built:</b> driver-based budget model with live scenarios.</div></div>
-      <div class="prf p4"><div class="n">04 &middot; Brand &amp; content</div><h4>Brand &amp; content</h4><p class="m">Professional standards on every page.</p><div class="built"><b>Built:</b> brand-compliant decks and facilitator packs.</div></div>
-    </div>
-    <div class="math">
-      <div class="mcard"><div class="lab">Capacity</div><div class="big">More output.<br>Same team.</div></div>
-      <div class="mcard"><div class="lab">Control</div><div class="big">Fewer<br>surprises.</div></div>
-      <div class="mcard"><div class="lab">Finance</div><div class="big">Know the numbers<br>before they matter.</div></div>
-      <div class="mcard"><div class="lab">Football</div><div class="big">More time<br>on the game.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT (build trust) -->
+<!-- 6. ABOUT -->
 <section class="g-off pad" id="about">
   <div class="wrap">
     <div class="ey"><span class="sq"></span>About Simplicae</div>
     <h2 class="h2" style="margin:18px 0 6px;max-width:820px;color:var(--ink)">Built by operators, for operators.</h2>
     <div class="about-grid">
       <div class="about-body">
-        <p>Simplicae started from a simple truth. <b>On the field, clubs have a game plan. Off it, they are on their own.</b> The people who love the club end up carrying the operation, and the operation runs on adrenaline.</p>
-        <p>We are not consultants who advise from the outside. <b>We are operators who run the work from the inside</b> &mdash; the people, systems and tools that organize the season behind the badge.</p>
-        <p>The result is capacity. A club does more, without hiring for every new demand, and the team on the field gets a team behind it.</p>
+        <p>Simplicae started from a simple truth. <b>On the field, teams have a game plan. Off it, they are on their own.</b> The people who love the club end up carrying the business, and the business runs on adrenaline.</p>
+        <p>We exist so teams can focus on the pitch, on the court, or wherever their sport is played, <b>while we take care of the business behind the curtain.</b></p>
+        <p>We are not consultants who advise from the outside. We are operators who do the work from the inside, with backgrounds in corporate operations, marketing and data management.</p>
       </div>
       <div class="about-facts">
-        <div class="fact"><div class="fl">Based in</div><div class="fv">Hamilton, Ontario &mdash; in the heart of the Canadian game.</div></div>
-        <div class="fact"><div class="fl">Backed by</div><div class="fv">A CDK Sports company.</div></div>
-        <div class="fact"><div class="fl">We work with</div><div class="fv">Clubs, leagues, national bodies and sports equipment manufacturers.</div></div>
         <div class="fact"><div class="fl">The promise</div><div class="fv">Grow the club. Not the headcount.</div></div>
+        <div class="fact"><div class="fl">We work with</div><div class="fv">Clubs, teams and leagues in any sport. Also national bodies and equipment manufacturers.</div></div>
+        <div class="fact"><div class="fl">Based in</div><div class="fv">Hamilton, Ontario.</div></div>
+        <div class="fact"><div class="fl">Backed by</div><div class="fv">A CDK Sports company.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ (build trust / objection killers) -->
+<!-- 7. FAQ -->
 <section class="g-forest pad" id="faq">
   <div class="wrap">
     <div class="ey sig"><span class="sq"></span>Common questions</div>
     <h2 class="h2" style="margin:18px 0 8px;max-width:760px">The things clubs ask first.</h2>
-    <div class="faq" id="faq">
-      <div class="faq-item"><button class="faq-q">Are you consultants or operators?</button><div class="faq-a"><p>Operators. We do not advise from the outside and hand you a report. We run the work from inside the club &mdash; owned, delivered and held to a standard.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Do you replace my staff?</button><div class="faq-a"><p>No. We give your team more capacity. The operating layer sits behind the people you already trust, so they do more without another full-time hire.</p></div></div>
-      <div class="faq-item"><button class="faq-q">What size of club is this for?</button><div class="faq-a"><p>Every stage &mdash; youth to pro. The operating layer is the same idea at each level. The depth scales as the club grows.</p></div></div>
-      <div class="faq-item"><button class="faq-q">How does an engagement start?</button><div class="faq-a"><p>With an operations review, scoped to one department and one season. A clear, low-risk starting point that shows where the capacity is being lost.</p></div></div>
-      <div class="faq-item"><button class="faq-q">How fast can we begin?</button><div class="faq-a"><p>An operations review can start within weeks. We meet the season where it is, not where it was.</p></div></div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q">Are you consultants or operators?</button><div class="faq-a"><p>Operators. We don&rsquo;t hand you a report and leave. We do the work from inside the club, and we are accountable for it.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do you replace my staff?</button><div class="faq-a"><p>No. We give your people more capacity. We take the business work off them, so they do more of what only they can do, without another full-time hire.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Which sports do you work with?</button><div class="faq-a"><p>Any. The business behind a team looks much the same whatever the sport: registrations, sponsors, budgets, schedules and rules. We adapt the detail to your sport and your league.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What size of club is this for?</button><div class="faq-a"><p>Youth to pro. A volunteer-run youth club might hand us registration and a simple budget. A professional club might hand us whole departments. The idea is the same. The depth changes.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Is Simplicae a software company?</button><div class="faq-a"><p>We are a service first. Our software, Simplicae OS, is how our operators keep the work organized and how you see what is happening.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How does it start, and how fast?</button><div class="faq-a"><p>With an operations review, scoped to one area of the club and one season. It can start within weeks.</p></div></div>
     </div>
   </div>
 </section>
 
 <section class="cta" id="next">
   <div class="wrap">
-    <h2>Stop running the club on adrenaline. Let&rsquo;s build the operating layer behind your season.</h2>
-    <a class="btn-dark" href="mailto:hello@simplicae.com?subject=Operations%20review">Start with an operations review</a>
+    <h2>Stop running the club on adrenaline. Hand us the business behind the game.</h2>
+    <a class="btn-dark js-contact" href="mailto:hello@simplicae.com?subject=Operations%20review">Start with an operations review</a>
   </div>
 </section>
 
@@ -628,134 +565,88 @@
     <div class="foot-top">
       <a class="logo" href="#top" aria-label="Simplicae"><img src="data:image/png;base64,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" alt="Simplicae"></a>
       <div class="foot-links">
-        <div class="foot-col"><h5>The work</h5><a href="#offer">What we offer</a><a href="#samples">Sample tools</a><a href="#model">Operating model</a><a href="#proof">Proof</a></div>
-        <div class="foot-col"><h5>Your club</h5><a href="#tiers">Youth</a><a href="#tiers">Amateur</a><a href="#tiers">Semi-pro</a><a href="#tiers">Pro</a></div>
-        <div class="foot-col"><h5>Company</h5><a href="#about">About</a><a href="#faq">Questions</a><a href="#next">Talk to Simplicae</a><a href="https://os.simplicae.com">Client login</a></div>
+        <div class="foot-col"><h5>The work</h5><a href="#work">What we take on</a><a href="#how">How it works</a><a href="#start">How to start</a></div>
+        <div class="foot-col"><h5>Company</h5><a href="#about">About</a><a href="#faq">Questions</a><a href="#next">Talk to Simplicae</a><a href="https://os.simplicae.com/">Client login</a></div>
       </div>
     </div>
-    <p class="boiler">Simplicae is a sports operations agency based in Hamilton, Ontario. It installs and runs the operating layer behind clubs, leagues, national bodies and sports equipment manufacturers: the people, systems and tools that organize the work behind the season. Simplicae is a CDK Sports company.</p>
+    <p class="boiler">Simplicae is the back office for sports organizations. Based in Hamilton, Ontario, our operators and software run the business behind clubs, teams and leagues, so they can focus on the game. Simplicae is a CDK Sports company.</p>
     <div class="foot-bottom"><span class="endorse">Operations by Simplicae.</span><span>Hamilton, Ontario &middot; A CDK Sports company &middot; &copy; 2026</span></div>
   </div>
 </footer>
 
-<script>
-const money=n=>(n<0?'\u2212$':'$')+Math.abs(Math.round(n)).toLocaleString('en-CA');
+<!-- floating contact -->
+<button class="gt-fab js-contact" type="button" aria-haspopup="dialog" aria-controls="gtPanel">Get in touch</button>
+<div class="gt-panel" id="gtPanel" role="dialog" aria-label="Get in touch" hidden>
+  <button class="gt-x" type="button" aria-label="Close">&times;</button>
+  <div class="gt-h">Get in touch</div>
+  <p class="gt-s">Tell us a little about your club and we&rsquo;ll reply by email.</p>
+  <form id="gtForm">
+    <label>Your name<input name="name" type="text" autocomplete="name" required></label>
+    <label>Club or organization<input name="org" type="text" autocomplete="organization" required></label>
+    <label>Email<input name="email" type="email" autocomplete="email" required></label>
+    <label>What do you need help with?<textarea name="msg" rows="3"></textarea></label>
+    <button class="btn btn-sig" type="submit">Send by email</button>
+    <p class="gt-note">This opens your email app with the message ready to send to hello@simplicae.com.</p>
+  </form>
+</div>
 
-/* problem finder — identify the pain, route to the fix + CTA */
+<script>
+const tk=(n,p)=>{if(window.sxTrack)window.sxTrack(n,p||{});};
+const money=n=>(n<0?'−$':'$')+Math.abs(Math.round(n)).toLocaleString('en-CA');
+
+/* problem finder: identify the pain, route to the fix + CTA */
 const PF=[
-  {chip:"We\u2019re drowning in admin",fix:"We become the back office that owns it.",d:"Registration, scheduling, comms and matchday move off a few overloaded people and into a run operation \u2014 owned week to week, not scrambled the night before.",tags:["Operational Layer","Registration & admin"],see:"#samples",seeTxt:"See the sample tools"},
-  {chip:"Budget is a guessing game",fix:"A live model you can actually steer by.",d:"Driver-based budgets and cash-flow timelines replace the spreadsheet-and-a-hunch. See the trough before it catches you, and know the numbers before they matter.",tags:["Finance & planning","Cash Flow Timeline"],see:"#samples",seeTxt:"Try the budget tools"},
-  {chip:"Sponsors aren\u2019t renewing",fix:"Turn inventory into revenue that sticks.",d:"A tiered prospectus, priced and packaged, plus the activation reporting that renews partners at the end of the season instead of losing them.",tags:["Partnerships","Sponsorship builder"],see:"#samples",seeTxt:"Build a package"},
-  {chip:"Compliance keeps biting us",fix:"Deadlines owned, not chased.",d:"Licensing, rosters, registration and eligibility run ahead of the calendar \u2014 met early, not the night before, so a missed date never costs you points or a fine.",tags:["Compliance & governance","Registration & admin"],see:"#model",seeTxt:"See the operating model"},
-  {chip:"The football side is stretched",fix:"Give the coaches a team behind them.",d:"Matchday operations, analysis, training design and set-piece prep handled by the layer, so the football staff stay focused on the football.",tags:["Matchday operations","Technical performance"],see:"#samples",seeTxt:"Open the tactical pad"},
-  {chip:"We can\u2019t grow without hiring",fix:"Grow the club. Not the headcount.",d:"The operating layer adds capacity behind the people you already trust \u2014 more output from the same team, and you switch on more of it as you grow.",tags:["The whole operating layer","Simplicae OS"],see:"#tiers",seeTxt:"Find your stage"}
+  {chip:"We’re drowning in admin",fix:"We become the back office that owns it.",d:"Registration, scheduling, communications and gameday move off a few overloaded people and into a run operation, owned week to week and not scrambled the night before.",tags:["Registration & admin","Gameday operations"],see:"#work",seeTxt:"See what we take on"},
+  {chip:"Budget is a guessing game",fix:"A live budget you can actually steer by.",d:"A proper budget and cash-flow view replace the spreadsheet and the hunch. You see the tight months before they arrive, and you know the numbers before they matter.",tags:["Finance & planning"],see:"#how",seeTxt:"Try the budget tool"},
+  {chip:"Sponsors aren’t renewing",fix:"Turn sponsorship into revenue that sticks.",d:"Packages that are priced and easy to buy, delivery that is tracked, and an end-of-season report that shows each partner what they got. That is what gets a renewal.",tags:["Partnerships"],see:"#how",seeTxt:"Build a package"},
+  {chip:"Compliance keeps biting us",fix:"Deadlines owned, not chased.",d:"Licensing, rosters, registration and eligibility run ahead of the calendar. They are met early, so a missed date never costs you points or a fine.",tags:["Compliance & governance","Registration & admin"],see:"#work",seeTxt:"See what we take on"},
+  {chip:"Our coaches are doing admin",fix:"Give the coaches a team behind them.",d:"Gameday logistics, scheduling, session prep and reporting come off the coaching staff, so they spend their time on the sport and the athletes.",tags:["Gameday operations","Technical performance"],see:"#work",seeTxt:"See what we take on"},
+  {chip:"We can’t grow without hiring",fix:"Grow the club. Not the headcount.",d:"Our operators and software add capacity behind the people you already trust. You start with one area and switch on more as the club grows.",tags:["Embedded operators","Simplicae OS"],see:"#start",seeTxt:"See how to start"}
 ];
 function renderPF(idx){
-  document.getElementById('pfChips').innerHTML=PF.map((p,i)=>'<div class="pf-chip'+(i===idx?' active':'')+'" onclick="renderPF('+i+')">'+p.chip+'</div>').join('');
+  document.getElementById('pfChips').innerHTML=PF.map((p,i)=>'<div class="pf-chip'+(i===idx?' active':'')+'" onclick="pickPF('+i+')">'+p.chip+'</div>').join('');
   const p=PF[idx];
   document.getElementById('pfPanel').innerHTML=
     '<div class="pf-left"><div class="pf-k">Your fix</div><div class="pf-fix">'+p.fix+'</div><div class="pf-d">'+p.d+'</div></div>'+
-    '<div class="pf-right"><div class="pf-solve">We solve it with</div><div class="pf-tags">'+p.tags.map(t=>'<span class="pf-tag">'+t+'</span>').join('')+'</div>'+
-    '<a class="btn btn-sig" href="#next">Start with an operations review</a><a class="pf-see" href="'+p.see+'">'+p.seeTxt+' \u2192</a></div>';
+    '<div class="pf-right"><div class="pf-solve">We take on</div><div class="pf-tags">'+p.tags.map(t=>'<span class="pf-tag">'+t+'</span>').join('')+'</div>'+
+    '<a class="btn btn-sig" href="#next">Start with an operations review</a><a class="pf-see" href="'+p.see+'">'+p.seeTxt+' →</a></div>';
 }
+function pickPF(i){renderPF(i);tk('problem_select',{label:PF[i].chip});}
 renderPF(0);
 
-/* tier ladder */
-const TIERS={
-  youth:{line:"Run the club like it\u2019s bigger than it is.",know:"You know you\u2019re here if the club is run by <b>volunteers and parents</b>, funded by registration fees, and \u201Cthe office\u201D is someone\u2019s kitchen table.",cells:[{lab:"Who runs it",txt:"A volunteer board and parent helpers."},{lab:"Funded by",txt:"Registration fees and small local sponsors."},{lab:"Plays",txt:"House league to competitive youth and academy."},{lab:"The pain",txt:"Everything depends on a few people, and it lives in their heads and inboxes.",pain:true},{lab:"What we take on",txt:"Registration, scheduling, parent comms, camps, a simple budget.",span:true}]},
-  amateur:{line:"Structure before it breaks.",know:"You know you\u2019re here if you\u2019re <b>adding teams and money is really moving now</b>, but there\u2019s still no one whose actual job is the operation.",cells:[{lab:"Who runs it",txt:"A committee and a first part-time coordinator."},{lab:"Funded by",txt:"Fees, sponsorships and programs or camps."},{lab:"Plays",txt:"Regional and provincial leagues, multiple age groups."},{lab:"The pain",txt:"Growth is outrunning the admin. Things slip, and no one owns the back office.",pain:true},{lab:"What we add",txt:"Finance and budgeting, sponsorship basics, compliance, matchday structure.",span:true}]},
-  semipro:{line:"Professional standards, without a pro budget.",know:"You know you\u2019re here if you play in a <b>sanctioned league with real standards</b>, players are being paid, and licensing deadlines are a genuine risk.",cells:[{lab:"Who runs it",txt:"A small paid staff (GM / ops) and coaches."},{lab:"Funded by",txt:"Gate, sponsorship, programs and some partner revenue."},{lab:"Plays",txt:"Semi-professional and sanctioned senior competition."},{lab:"The pain",txt:"League standards, budgets and compliance have outgrown the tools and the hours.",pain:true},{lab:"What we add",txt:"Licensing and compliance, technical and performance ops, commercial growth, custom tools.",span:true}]},
-  pro:{line:"Grow the club. Not the headcount.",know:"You know you\u2019re here if the <b>squad and staff are full-time</b>, there\u2019s a cap and a board to answer to, and a lean front office holds it all together.",cells:[{lab:"Who runs it",txt:"Full-time football and business staff, a front office."},{lab:"Funded by",txt:"Broadcast and league, commercial, gate, ownership."},{lab:"Plays",txt:"CPL-tier and fully professional competition."},{lab:"The pain",txt:"More expectations, compliance and reporting every season. Same small back office.",pain:true},{lab:"What we add",txt:"The full operating layer &mdash; Sporting, Commercial, Corporate &mdash; plus Simplicae OS.",span:true}]}
-};
-function renderTier(key){const t=TIERS[key];document.getElementById('tierKnow').innerHTML=t.know;document.getElementById('tierLine').textContent=t.line;document.getElementById('tierBody').innerHTML=t.cells.map(c=>{const cls='tier-cell'+(c.pain?' pain':'');const style=c.span?'grid-column:1 / -1;':'';return '<div class="'+cls+'" style="'+style+'"><div class="lab">'+c.lab+'</div><div class="txt">'+c.txt+'</div></div>';}).join('');document.querySelectorAll('.rung-btn').forEach(b=>b.classList.toggle('active',b.dataset.tier===key));}
-document.querySelectorAll('.rung-btn').forEach(b=>b.addEventListener('click',()=>renderTier(b.dataset.tier)));
-renderTier('youth');
+/* sample tools: report the first interaction with each one */
+const toolSeen={};
+function toolUsed(name){if(toolSeen[name])return;toolSeen[name]=1;tk('sample_tool_use',{label:name});}
 
 /* budget */
 function bgCalc(){const gate=+document.getElementById('bg_gate').value,spon=+document.getElementById('bg_spon').value,ros=+document.getElementById('bg_roster').value;document.getElementById('bg_gate_v').textContent=money(gate);document.getElementById('bg_spon_v').textContent=money(spon);document.getElementById('bg_roster_v').textContent=ros;const rev=gate*15+spon+200000,exp=ros*2500+195000,net=rev-exp;document.getElementById('bg_rev').textContent=money(rev);document.getElementById('bg_exp').textContent=money(exp);const ne=document.getElementById('bg_net');ne.textContent=money(net);ne.className='v '+(net>=0?'pos':'neg');}
-['bg_gate','bg_spon','bg_roster'].forEach(id=>document.getElementById(id).addEventListener('input',bgCalc));bgCalc();
+['bg_gate','bg_spon','bg_roster'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{bgCalc();toolUsed('club_budget');}));bgCalc();
 
 /* sponsorship */
 const SPT=[{n:'Title',p:12000,c:1},{n:'Gold',p:6000,c:2},{n:'Silver',p:2500,c:4},{n:'Community',p:750,c:8}];
 function spTotal(){document.getElementById('sp_total').textContent=money(SPT.reduce((s,t)=>s+t.p*t.c,0));}
-function spStep(i,d){SPT[i].c=Math.max(0,SPT[i].c+d);document.getElementById('sp_n_'+i).textContent=SPT[i].c;spTotal();}
-function spRender(){document.getElementById('sp_body').innerHTML=SPT.map((t,i)=>'<div class="tier2"><span class="nm">'+t.n+'</span><span class="pr">'+money(t.p)+'</span><div class="step"><button onclick="spStep('+i+',-1)">\u2212</button><span class="n" id="sp_n_'+i+'">'+t.c+'</span><button onclick="spStep('+i+',1)">+</button></div></div>').join('')+'<div class="sp-total"><span class="l">Inventory value</span><span class="v" id="sp_total">$0</span></div>';spTotal();}
+function spStep(i,d){SPT[i].c=Math.max(0,SPT[i].c+d);document.getElementById('sp_n_'+i).textContent=SPT[i].c;spTotal();toolUsed('sponsorship');}
+function spRender(){document.getElementById('sp_body').innerHTML=SPT.map((t,i)=>'<div class="tier2"><span class="nm">'+t.n+'</span><span class="pr">'+money(t.p)+'</span><div class="step"><button onclick="spStep('+i+',-1)">−</button><span class="n" id="sp_n_'+i+'">'+t.c+'</span><button onclick="spStep('+i+',1)">+</button></div></div>').join('')+'<div class="sp-total"><span class="l">Package value</span><span class="v" id="sp_total">$0</span></div>';spTotal();}
 spRender();
 
-/* tactical */
-/* tactical pad — formations, tactics (block height) and draggable players */
-const TPF={
-  '433':[[8,50],[26,20],[24,42],[24,58],[26,80],[46,32],[44,50],[46,68],[68,22],[74,50],[68,78]],
-  '442':[[8,50],[26,20],[24,42],[24,58],[26,80],[48,22],[46,42],[46,58],[48,78],[70,40],[70,60]],
-  '4231':[[8,50],[26,20],[24,42],[24,58],[26,80],[42,42],[42,58],[58,22],[60,50],[58,78],[74,50]],
-  '4141':[[8,50],[26,20],[24,42],[24,58],[26,80],[40,50],[54,20],[52,42],[52,58],[54,80],[72,50]],
-  '352':[[8,50],[26,30],[24,50],[26,70],[44,16],[46,38],[44,50],[46,62],[44,84],[70,40],[70,60]]
-};
-const TPT={press:{dx:12,yc:0.9},mid:{dx:0,yc:1},low:{dx:-9,yc:0.92}};
-let tpDots=[], tpPos=[], tpState={f:'433',t:'mid'};
-function tpBase(){const f=TPF[tpState.f],t=TPT[tpState.t];return f.map((p,i)=>{if(i===0)return [p[0],p[1]];return [Math.max(4,Math.min(94,p[0]+t.dx)),Math.round((50+(p[1]-50)*t.yc)*10)/10];});}
-function tpPlace(){tpPos.forEach((p,i)=>{tpDots[i].style.left=p[0]+'%';tpDots[i].style.top=p[1]+'%';});}
-function tpApply(){tpPos=tpBase();tpPlace();document.querySelectorAll('#tp_forms button').forEach(b=>b.classList.toggle('on',b.dataset.f===tpState.f));document.querySelectorAll('#tp_tacts button').forEach(b=>b.classList.toggle('on',b.dataset.t===tpState.t));}
-function tpDrag(el,i){const pit=document.getElementById('tp_pitch');let on=false;
-  el.addEventListener('pointerdown',e=>{on=true;el.classList.add('drag');if(el.setPointerCapture)el.setPointerCapture(e.pointerId);e.preventDefault();});
-  el.addEventListener('pointermove',e=>{if(!on)return;const r=pit.getBoundingClientRect();const x=Math.max(2,Math.min(98,(e.clientX-r.left)/r.width*100)),y=Math.max(4,Math.min(96,(e.clientY-r.top)/r.height*100));el.style.left=x+'%';el.style.top=y+'%';tpPos[i]=[+x.toFixed(1),+y.toFixed(1)];});
-  const end=()=>{on=false;el.classList.remove('drag');};el.addEventListener('pointerup',end);el.addEventListener('pointercancel',end);}
-function tpInit(){const p=document.getElementById('tp_pitch');for(let i=0;i<11;i++){const d=document.createElement('div');d.className='tp-dot';p.appendChild(d);tpDots.push(d);tpDrag(d,i);}tpApply();}
-tpInit();
-document.querySelectorAll('#tp_forms button').forEach(b=>b.addEventListener('click',()=>{tpState.f=b.dataset.f;tpApply();}));
-document.querySelectorAll('#tp_tacts button').forEach(b=>b.addEventListener('click',()=>{tpState.t=b.dataset.t;tpApply();}));
-
-/* cash flow timeline */
-const CF_MON=['J','F','M','A','M','J','J','A','S','O','N','D'];
-const CF_REVW=[0.03,0.04,0.13,0.12,0.11,0.09,0.10,0.09,0.08,0.08,0.05,0.08];
-const CF_EXTRA=[0,18000,12000,0,0,0,0,0,0,0,0,4000];
-const CF_ANNUAL=290000;
-function cfCalc(){
-  const start=+document.getElementById('cf_start').value, cost=+document.getElementById('cf_cost').value;
-  document.getElementById('cf_start_v').textContent=money(start);
-  document.getElementById('cf_cost_v').textContent=money(cost);
-  let bal=start; const bals=[];
-  for(let m=0;m<12;m++){bal+=CF_ANNUAL*CF_REVW[m]-(cost+CF_EXTRA[m]);bals.push(Math.round(bal));}
-  const low=Math.min(...bals), end=bals[11], red=bals.filter(b=>b<0).length;
-  const lowIdx=bals.indexOf(low);
-  const hi=Math.max(...bals, start, 1), lo=Math.min(...bals, 0);
-  const range=(hi-lo)||1;
-  document.getElementById('cf_chart').innerHTML=bals.map((b,i)=>{
-    const h=Math.max(4,(b-lo)/range*100);
-    const cls=b<0?'neg':(i===lowIdx?'low':'pos');
-    return '<div class="col"><div class="bar '+cls+'" style="height:'+h+'%"></div></div>';
-  }).join('');
-  document.getElementById('cf_labels').innerHTML=CF_MON.map(m=>'<span>'+m+'</span>').join('');
-  const le=document.getElementById('cf_low'); le.textContent=money(low); le.className='v '+(low<0?'neg':'');
-  const ee=document.getElementById('cf_end'); ee.textContent=money(end); ee.className='v '+(end>=start?'pos':'');
-  const re=document.getElementById('cf_red'); re.textContent=red; re.className='v '+(red>0?'neg':'pos');
-}
-['cf_start','cf_cost'].forEach(id=>document.getElementById(id).addEventListener('input',cfCalc));cfCalc();
-
-/* training load */
-function tlCalc(){const sess=+document.getElementById('tl_sess').value,rpe=+document.getElementById('tl_rpe').value;document.getElementById('tl_sess_v').textContent=sess;document.getElementById('tl_rpe_v').textContent=rpe;
-  const days=[];for(let i=0;i<sess;i++){const taper=1-(sess-1-i)*0.10;days.push(Math.round(rpe*taper*10)/10);}days.push('M');
-  const loads=days.map((d,i)=>i<sess?d*60:0);const total=Math.round(loads.reduce((a,b)=>a+b,0));const peak=Math.max(...days.slice(0,sess));const max=Math.max(...loads,rpe*60,540);
-  document.getElementById('tl_bars').innerHTML=days.map((d,i)=>{const isM=(i===sess);const h=isM?100:Math.max(8,loads[i]/max*100);const lbl=isM?'MD':'S'+(i+1);return '<div class="col"><div class="bar '+(isM?'match':'')+'" style="height:'+h+'%"></div><div class="cl">'+lbl+'</div></div>';}).join('');
-  document.getElementById('tl_s').textContent=sess;document.getElementById('tl_p').textContent=peak;document.getElementById('tl_l').textContent=total.toLocaleString('en-CA')+' AU';}
-['tl_sess','tl_rpe'].forEach(id=>document.getElementById(id).addEventListener('input',tlCalc));tlCalc();
-
-/* contract & wage */
-const CT=[{n:'Forward A',w:14000,e:4},{n:'Midfielder B',w:11000,e:14},{n:'Defender C',w:9000,e:3},{n:'Winger D',w:7000,e:22},{n:'Keeper E',w:6000,e:9}];
-function ctDot(e){return e<=6?'#E4574C':e<=12?'#E0B341':'#3D994C';}
-function ctCalc(){
-  const cap=+document.getElementById('ct_cap').value;
-  document.getElementById('ct_cap_v').textContent=money(cap);
-  const bill=CT.reduce((s,p)=>s+p.w,0), head=cap-bill, exp=CT.filter(p=>p.e<=6).length;
-  document.getElementById('ct_list').innerHTML=CT.map(p=>
-    '<div class="cp-row"><span class="cp-dot" style="background:'+ctDot(p.e)+'"></span><span class="cp-nm">'+p.n+'</span><span class="cp-days" style="width:auto;color:var(--muted-d);margin-right:10px">'+money(p.w)+'</span><span class="cp-days">'+p.e+'mo</span></div>'
-  ).join('')+
-    '<div class="readout" style="margin-top:auto"><div class="rc"><div class="l">Player wages</div><div class="v">'+money(bill)+'</div></div><div class="rc"><div class="l">Budget left</div><div class="v '+(head>=0?'pos':'neg')+'">'+money(head)+'</div></div><div class="rc"><div class="l">Expiring &le;6mo</div><div class="v '+(exp>0?'neg':'pos')+'">'+exp+'</div></div></div>';
-}
-document.getElementById('ct_cap').addEventListener('input',ctCalc);ctCalc();
-
 /* faq */
-document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
+document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{const open=q.parentElement.classList.toggle('open');if(open)tk('faq_open',{label:q.textContent.trim()});}));
+
+/* floating contact panel */
+const gtPanel=document.getElementById('gtPanel'),gtForm=document.getElementById('gtForm');
+function gtOpen(from){gtPanel.hidden=false;gtForm.elements.name.focus();tk('contact_open',{location:from});}
+function gtClose(){gtPanel.hidden=true;}
+document.querySelectorAll('.js-contact').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();if(gtPanel.hidden)gtOpen(b.classList.contains('gt-fab')?'floating_button':'final_cta');else gtClose();}));
+document.querySelector('.gt-x').addEventListener('click',gtClose);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!gtPanel.hidden)gtClose();});
+gtForm.addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=gtForm.elements;
+  const body='Name: '+f.name.value+'\nClub or organization: '+f.org.value+'\nEmail: '+f.email.value+'\n\n'+f.msg.value;
+  tk('generate_lead',{method:'contact_panel'});
+  window.location.href='mailto:hello@simplicae.com?subject='+encodeURIComponent('Operations review: '+f.org.value)+'&body='+encodeURIComponent(body);
+});
 </script>
+<script type="module" src="/hero3d.js"></script>
 </body>
 </html>
